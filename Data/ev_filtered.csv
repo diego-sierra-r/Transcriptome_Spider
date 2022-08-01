@@ -1,0 +1,340 @@
+Contig_Name,Kegg_code,Annotation,Name,EC_code,venom_related,Reason_venom_related,Function,protDB,X.ID,evalue,bitscore
+TRINITY_DN10544_c0_g1_i1,,BLAST,Methyltransferase-Like Protein,,NO,NA,DNA/RNA binding,JAV48041.1,71069,1.26E-77,231
+TRINITY_DN13298_c0_g1_i2,K16669,kegg,Protocadherin Fat 4,NA,NO,Cell Maduration,Cell cycle regulation,CAD45190.1,35714,4.54E-12,67.8
+TRINITY_DN13552_c0_g2_i1,,BLAST,Nicotinic Acetylcholine Receptor Alpha Subunit ,NA,NO,Neuromuscular Process,Ion channel,ALE66017.1,27273,4.55E-08,57.8
+TRINITY_DN14831_c0_g1_i1,K15001,kegg,Cytochrome P450 Family 4,1.14.-.-,NO,Respiration,Respiration,JAV48216.1,45098,3.47E-09,60.1
+TRINITY_DN15020_c0_g1_i1,K05312,kegg,Nicotinic Acetylcholine Receptor Alpha Subunit ,NA,NO,Neuromuscular Process,Ion channel,ALE66017.1,43836,3.56E-15,76.3
+TRINITY_DN34946_c0_g1_i1,,BLAST,Toxin-Like Structure Agortx_B7a Precursor,NA,YES,Neuromuscular Process,Toxin,AAU93683.1,68056,2.5E-31,109
+TRINITY_DN36044_c0_g1_i1,,BLAST,Leucine-Rich Repeat Protein Isoform S1,NA,NO,Respiration,Respiration,QDC23080.1,35664,1.24E-49,171
+TRINITY_DN36635_c0_g1_i1,,BLAST,Astacin-Like Metalloprotease Toxin,NA,YES,Protease,Degradation of polypeptides,XP_035219845.1,58423,5.39E-111,325
+TRINITY_DN37341_c0_g1_i4,,BLAST,Astacin-Like Metalloprotease Toxin,NA,YES,Protease,Degradation of polypeptides,KFM64332.1,79452,1.12E-131,376
+TRINITY_DN39316_c0_g1_i1,,BLAST,Toxin Cstx-20-Like,NA,YES,Neuromuscular Process,Toxin,XP_023238573.1,31068,2.09E-08,52
+TRINITY_DN39464_c0_g2_i1,,BLAST,Allene Oxide Synthase-Lipoxygenase Protein,NA,NO,Lipid Metabolism,Lipid metabolism,GBM48678.1,45349,1.14E-14,76.3
+TRINITY_DN40171_c3_g2_i1,K09640,BLAST,Putative PQM Protease Precursor,3.4.21.-,YES,Protease,Toxin maduration,AUI10835.1,46275,3.12E-75,234
+TRINITY_DN40171_c3_g2_i5,,BLAST,Putative PQM Protease Precursor,3.4.21.-,YES,Protease,Toxin maduration,AUI10839.1,44976,1.58E-54,179
+TRINITY_DN40301_c1_g1_i8,K05465,BLAST,Techylectin-Like Protein,NA,NO,Binding,Cell-cell adhesion,P85031.1,72674,1.57E-82,245
+TRINITY_DN40844_c5_g2_i1,,BLAST,Csa-Guanyl Cyclase 3,NA,YES,Vasodilator,Toxin enhancer,CFW94178.1,29856,6.54E-22,105
+TRINITY_DN40949_c1_g1_i2,,BLAST,Allene Oxide Synthase-Lipoxygenase Protein,NA,NO,Lipid Metabolism,Lipid metabolism,GBM48678.1,48276,6.84E-06,48.1
+TRINITY_DN41018_c0_g1_i1,,BLAST,Lim And Calponin Homology Domains,NA,NO,Motor Function,Structural,XP_015908158.1,31982,2.56E-22,107
+TRINITY_DN41029_c4_g3_i4,,BLAST,Polyadenylate-Binding Protein,NA,NO,Binding,DNA/RNA binding,JAV47947.1,34615,3.48E-06,52
+TRINITY_DN41080_c2_g1_i1,,BLAST,Neurotoxic Protein,NA,YES,Neuromuscular Process,Toxin,AAC26164.1,76316,6.19E-57,174
+TRINITY_DN41080_c2_g1_i4,,BLAST,U2-Ctenitoxin-Pn1b,NA,YES,Neuromuscular Process,Toxin,O76198.1,91026,9.21E-47,149
+TRINITY_DN41080_c2_g1_i5,,BLAST,U2-Ctenitoxin-Pn1b,NA,YES,Neuromuscular Process,Toxin,O76198.1,88525,2.31E-30,106
+TRINITY_DN41160_c0_g1_i2,,BLAST,Tachylectin 5a-Like Isoform 2,,NO,Binding,Cell-cell adhesion,QDC23079.1,61628,6.37E-75,229
+TRINITY_DN41620_c2_g1_i1,,BLAST,U20-Ctenitoxin-Pn1a,NA,YES,Neuromuscular Process,Toxin,P84093.1,79104,1.47E-32,110
+TRINITY_DN42635_c0_g1_i1,,BLAST,Polyprotein,NA,NO,Encapsidation,Endocytosis,JAV47945.1,31429,1.4E-10,65.9
+TRINITY_DN42696_c3_g1_i2,K17391,kegg,Insulin-Like Growth Factor 2 Mrna-Binding Protein 1 Venom,NA,NO,Binding,DNA/RNA binding,JAV48092.1,66341,0,628
+TRINITY_DN42749_c11_g1_i10,K09640,kegg,Transmembrane Protease Serine 9,3.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,91954,1.63E-115,331
+TRINITY_DN42749_c11_g1_i12,,BLAST,Putative PQM Protease Precursor,3.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,92248,2.9E-82,245
+TRINITY_DN42749_c11_g1_i15,,BLAST,Putative PQM Protease Precursor,4.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,86,2.95E-55,175
+TRINITY_DN42749_c11_g1_i9,,BLAST,Putative PQM Protease Precursor,13.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,93064,1.19E-116,334
+TRINITY_DN42994_c4_g1_i5,,BLAST,Delta-Ctenitoxin-Pr2d,NA,YES,Neuromuscular Process,Toxin,P83904,81481,7.87E-08,48.1
+TRINITY_DN43519_c1_g1_i6,,BLAST,Putative PQM Protease Precursor,17.4.21.-,YES,Protease,Toxin maduration,AUI10834.1,50,4.58E-32,119
+TRINITY_DN43519_c1_g1_i7,,BLAST,Putative PQM Protease Precursor,17.4.21.-,YES,Protease,Toxin maduration,AUI10834.1,46535,2.31E-24,104
+TRINITY_DN43723_c1_g1_i1,,BLAST,Serine Endopeptidase,3.4.21.-,YES,Protease,Degradation of polypeptides,AUI10835.1,50633,1.37E-22,92
+TRINITY_DN43723_c1_g1_i3,,BLAST,Putative PQM Protease Precursor,17.4.21.-,YES,Protease,Toxin maduration,AUI10834.1,47619,9.08E-26,100
+TRINITY_DN44021_c3_g3_i1,,BLAST,Mu-Ctenitoxin-Pn1a,NA,YES,Neuromuscular Process,Toxin,QJW70914.1,92105,2.73E-17,74.3
+TRINITY_DN44021_c3_g5_i1,,BLAST,Mu-Ctenitoxin-Pn1a,NA,YES,Neuromuscular Process,Toxin,P17727.2,89286,1.75E-09,55.1
+TRINITY_DN44021_c3_g8_i1,,BLAST,Mu-Ctenitoxin-Pn1a,NA,YES,Neuromuscular Process,Toxin,P17727.2,87778,3.86E-53,163
+TRINITY_DN44167_c1_g4_i1,,BLAST,Tx3-2 Neurotoxin,NA,YES,Neuromuscular Process,Toxin,AAC26168.1,85965,8.25E-30,103
+TRINITY_DN44250_c0_g1_i4,K01183,kegg,Chitinase,3.2.1.14,YES,Glicanohidrolase,Hydrolase,JAA92970.1,43296,4.27E-90,301
+TRINITY_DN44635_c3_g1_i2,K01049,kegg,Acetylcholinesterase,3.1.1.7,YES,Neuromuscular Process,Toxin enhancer,JAA92947.1,47541,3.84E-51,176
+TRINITY_DN44853_c0_g1_i2,,BLAST,Putative Acetylcholine Esterase,NA,YES,Neuromuscular Process,Toxin enhancer,JAA92947.1,41509,4.88E-33,130
+TRINITY_DN45129_c2_g11_i1,,BLAST,Toxin 40 Precursor,NA,YES,Neuromuscular Process,Toxin,QDC23150.1,75.51,1.64E-19,84.7
+TRINITY_DN45129_c2_g9_i1,,BLAST,Cystine Knot Toxin,NA,YES,Neuromuscular Process,Toxin,AGR53464.1,67826,1.76E-50,160
+TRINITY_DN45205_c0_g1_i2,,BLAST,Allene Oxide Synthase-Lipoxygenase Protein,NA,NO,Lipid Metabolism,Lipid metabolism,GBM48678.1,38667,2.53E-10,60.5
+TRINITY_DN45273_c8_g1_i2,,BLAST,Serpin B3,NA,YES,Protease,Degradation of polypeptides,JAV47828.1,23529,1.61E-25,111
+TRINITY_DN45284_c1_g2_i2,,BLAST,Peptidylglycine Alpha-Hydroxylating Monooxygenase,NA,NO,Peptide Metabolic Process,Respiration,JAV47979.1,25321,5.24E-11,66.2
+TRINITY_DN45390_c5_g3_i1,,BLAST,Tx3-2 Neurotoxin,NA,YES,Neuromuscular Process,Toxin,AAC26168.1,92857,1.21E-42,136
+TRINITY_DN45414_c0_g1_i8,,BLAST,Allene Oxide Synthase-Lipoxygenase Protein,NA,NO,Lipid Metabolism,Lipid metabolism,GBM48678.1,34737,9.99E-08,53.5
+TRINITY_DN45424_c1_g5_i3,,BLAST,Putative Neurotoxin Ltdf 05-04,NA,YES,Neuromuscular Process,Toxin,AKT08986.1,42391,6.9E-21,87.8
+TRINITY_DN45585_c2_g3_i2,,BLAST,Delta-Ctenitoxin-Pn2c,NA,YES,Neuromuscular Process,Toxin,QJW70915.1,87654,3.46E-29,104
+TRINITY_DN45585_c2_g3_i4,,BLAST,Delta-Ctenitoxin-Pn2c,NA,YES,Neuromuscular Process,Toxin,QJW70915.1,85366,3.44E-29,102
+TRINITY_DN45818_c4_g3_i1,,BLAST,U6-Ctenitoxin-Pn1a,NA,YES,Neuromuscular Process,Toxin,P81793.1,68235,1.08E-33,115
+TRINITY_DN45818_c4_g3_i3,,BLAST,U6-Ctenitoxin-Pn1a,NA,YES,Neuromuscular Process,Toxin,P81793.1,88.75,3.32E-48,149
+TRINITY_DN45971_c1_g2_i4,K10104,BLAST,Techylectin-Like Protein,NA,NO,Binding,Cell-cell adhesion,P85031.1,74009,3.98E-114,329
+TRINITY_DN46067_c3_g1_i1,K00471,kegg,Gamma-Butyrobetaine Hydroxylase,NA,NO,Biosynthetic Process,Respiration,GBM48678.1,37864,3.24E-09,58.2
+TRINITY_DN46243_c2_g2_i1,,BLAST,Gamma-Ctenitoxin-Pn1a,NA,YES,Neuromuscular Process,Toxin,P59367.2,52703,3.98E-15,67
+TRINITY_DN46400_c0_g2_i1,K01050,BLAST,Putative Acetylcholine Esterase,3.1.1.8,YES,Neuromuscular Process,Toxin enhancer,JAA92947.1,35959,1.44E-54,200
+TRINITY_DN46400_c0_g2_i3,,BLAST,Putative Acetylcholine Esterase,3.1.1.8,YES,Neuromuscular Process,Toxin enhancer,JAA92947.1,42241,1.65E-23,98.6
+TRINITY_DN46400_c0_g2_i4,K01049,BLAST,Putative Acetylcholine Esterase,3.1.1.8,YES,Neuromuscular Process,Toxin enhancer,JAA92947.1,36644,2.5E-60,204
+TRINITY_DN46626_c4_g3_i3,,BLAST,Delta-Ctenitoxin-Pn2c,NA,YES,Neuromuscular Process,Toxin,QJW70915.1,80488,6.85E-13,64.3
+TRINITY_DN46718_c0_g3_i1,K01672 ,kegg,Carbonic Anhydrase,4.2.1.1,NO,Nitrogen Metabolism,Respiration,JAV48261.1,30833,1.12E-10,60.5
+TRINITY_DN46780_c1_g1_i11,,BLAST,Polyprotein,NA,NO,Encapsidation,Endocytosis,JAV47945.1,39535,1.01E-25,80.1
+TRINITY_DN46780_c1_g1_i8,,BLAST,Polyprotein,NA,NO,Encapsidation,Endocytosis,JAV47945.1,31.69,2.34E-28,125
+TRINITY_DN46871_c4_g1_i1,K18245,BLAST,Carbonic Anhydrase,4.2.1.1,NO,Nitrogen Metabolism,Respiration,JAV48261.1,40708,4.99E-21,89.7
+TRINITY_DN47057_c11_g1_i2,K01050,BLAST,Putative Acetylcholine Esterase,3.1.1.8,YES,Neuromuscular Process,Toxin enhancer,JAA92947.1,46667,4.3E-40,144
+TRINITY_DN47057_c9_g2_i1,,BLAST,Putative Acetylcholine Esterase,3.1.1.8,YES,Neuromuscular Process,Toxin enhancer,JAA92947.1,40526,3.77E-41,149
+TRINITY_DN47114_c2_g1_i3,K18595,kegg,Echinoderm Microtubule-Associated Protein-Like 1/,NA,NO,Motor Function,Structural,GBM48678.1,38614,6.47E-12,67.8
+TRINITY_DN47202_c2_g2_i1,,BLAST,U10-Ctenitoxin-Pn1a,NA,YES,Neuromuscular Process,Toxin,P0C2S9.1,92453,2.43E-28,107
+TRINITY_DN47267_c7_g1_i2,,BLAST,U2-Ctenitoxin-Pn1b,NA,YES,Neuromuscular Process,Toxin,O76198.1,54.43,3.22E-19,84
+TRINITY_DN43608_c3_g6_i1,K01590,kegg,Histidine Decarboxylase,4.1.1.22,YES,"Induce Inflamaciones Alergicas, Componente De Multiples Venenos Animales",Toxin enhancer,NA,NA,NA,NA
+TRINITY_DN45587_c5_g2_i1,K15288,kegg,Slc35f3_4,NA,NO,Respuesta Celular A Hipoxia,Respiration,NA,NA,NA,NA
+TRINITY_DN39856_c0_g1_i1,K08202,kegg,Slc22a4_5,NA,NO,Cancerogenesis,DNA/RNA binding,NA,NA,NA,NA
+TRINITY_DN28613_c0_g1_i1,K00286,kegg,Pyrroline-5-Carboxylate Reductase,1.5.1.2,NO,Sintesis De Prolina Y Respuesta A Estres Oxidativo,Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN42743_c2_g2_i4,K00502,kegg,Tryptophan 5-Monooxygenase,1.14.16.4,NO,Regulacion De Sintesis De Serotonina,Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN41801_c2_g1_i2,K08706,kegg,Nr0an,NA,NO,Regulación Trasncripcional Y Pluripotencia,DNA/RNA binding,NA,NA,NA,NA
+TRINITY_DN45224_c1_g1_i4,K16667,kegg,Ptprg,NA,NO,Adhesion Celular,Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN45294_c3_g1_i3,K09205,kegg,Klf8_12,NA,NO,Regulador Transcripsional,Cell cycle regulation,NA,NA,NA,NA
+TRINITY_DN34867_c0_g1_i1,K01025,kegg,Sult1,NA,NO,Sulfotransferasa,Sulfotransferase ,NA,NA,NA,NA
+TRINITY_DN44490_c0_g2_i3,K10523,kegg,Speckle-Type Poz Protein,NA,NO,Mantener Estabilidad Genomica (Antitumoral),Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN46837_c5_g1_i3,K16353,kegg,sidekick-2,NA,NO,Fotorecepcion ,Photoreception,NA,NA,NA,NA
+TRINITY_DN39856_c0_g1_i2,K08202,kegg,Slc22a4_5,NA,NO,Cancerogenesis,DNA/RNA binding,NA,NA,NA,NA
+TRINITY_DN44481_c1_g2_i7,K19625,kegg,Rlbp1,NA,NO,Implicado En La Fotorecepcion,Photoreception,NA,NA,NA,NA
+TRINITY_DN43998_c5_g2_i8,K01135,kegg,Chondroitin sulfate,3.1.6.12,NO,Componente De Venenos En Artropodos,carbohydrate binding,NA,NA,NA,NA
+TRINITY_DN37460_c0_g2_i6,K08495,kegg,Golgi Snap Receptor Complex Member 1,NA,NO,Antiperoxido,Oxidative stress,NA,NA,NA,NA
+TRINITY_DN42266_c1_g1_i8,K00626,kegg,Acetyl-Coa C-Acetyltransferase,2.3.1.9,NO,Implicada En Multiples Rutas De Degradacion ,Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN42859_c2_g7_i1,K19363,kegg,Lipopolysaccharide-Induced Tumor Necrosis Factor-Alpha Factor,NA,NO,Crecimiento Celular,DNA/RNA binding,NA,NA,NA,NA
+TRINITY_DN41667_c1_g2_i1,K18259,kegg,Protein Amnionless,NA,NO,Maduracion De Proteinas Y Detoxificacion,Transport,NA,NA,NA,NA
+TRINITY_DN40442_c0_g1_i1,K19625,kegg,Rlbp1,NA,NO,Implicado En La Fotorecepcion,Photoreception,NA,NA,NA,NA
+TRINITY_DN47190_c2_g2_i7,K10801,kegg,Methyl-Cpg-Binding Domain Protein 4,3.2.2.-,NO,Reparación De Dna,DNA/RNA binding,NA,NA,NA,NA
+TRINITY_DN43530_c2_g1_i5,K05695,kegg,Receptor-Type Tyrosine-Protein Phosphatase F,NA,NO,Adhesion Celular,Cell-cell adhesion,NA,NA,NA,NA
+TRINITY_DN39671_c4_g2_i7,K00639,kegg,Glycine C-Acetyltransferase,2.3.1.29,NO,Anabolismo De Glicina,Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN44108_c4_g2_i2,K00718,kegg,Galactoside 2-L-Fucosyltransferase,2.4.1.69,NO,Fucosyltransferasasa Es Un Componente De Lso Venenos En Abejas,Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN45674_c2_g1_i5,K01025,kegg,Sult1,NA,NO,Sulfotransferasa,Sulfotransferase ,NA,NA,NA,NA
+TRINITY_DN14705_c0_g1_i1,,BLAST,Seven-up protein,,NO,NA,DNA/RNA binding,CAH59197.1,48889,2.01E-23,103
+TRINITY_DN36710_c0_g1_i1,,BLAST,Putative cuticular protein,,NO,NA,Structural,JAC59239.1,57843,7.67E-20,86.7
+TRINITY_DN38813_c0_g1_i1,,BLAST,Astacin-like metalloprotease toxin,NA,YES,Protease,Degradation of polypeptides,RWS27074.1,40449,6.28E-36,133
+TRINITY_DN39354_c0_g1_i1,,BLAST,Carbonic anhydrase,4.2.1.1,NO,Hydrates cyanamide to urea,Nitrogen metabolism,JAV48261.1,30,1.65E-06,49.7
+TRINITY_DN39354_c0_g1_i2,K01672,BLAST,Carbonic anhydrase,4.2.1.2,NO,Hydrates cyanamide to urea,Nitrogen metabolism,JAV48261.1,30.37,2.05E-23,100
+TRINITY_DN41235_c4_g1_i3,K13443,kegg,Protein npc2,NA,NO,Unknown,Intracellular cholesterol transport,JAV47995.1,29688,8.39E-13,67.4
+TRINITY_DN41310_c0_g2_i2,K09632,BLAST,Serine proteinase,3.4.21.-,YES,Protease,Degradation of polypeptides,JAV47807.1,26715,3.38E-21,94
+TRINITY_DN41352_c2_g1_i1,,BLAST,Hemocyanin subunit 6,NA,NO,Respiration,Respiration,CAC44756.1,87619,1.72E-63,206
+TRINITY_DN41692_c0_g6_i3,,BLAST,Allene oxide synthase-lipoxygenase protein,NA,NO,Lipid metabolism,Lipid metabolism,GBM48678.1,36.09,2.1E-15,76.6
+TRINITY_DN42106_c0_g6_i1,K01335,kegg,Complement factor b,3.4.21.47,YES,Protease,Degradation of polypeptides,JAV47990.1,33333,9.16E-08,57
+TRINITY_DN42569_c0_g4_i4,,BLAST,Peroxidase,NA,NO,Respiration,Oxidative stress,JAV47961.1,46.37,1.41E-127,392
+TRINITY_DN42849_c6_g1_i2,,BLAST,Hemocyanin subunit 6,NA,NO,Respiration,Respiration,CAC44756.1,87.5,7.2E-32,124
+TRINITY_DN44171_c2_g2_i7,K15614,BLAST,Cs-six1 a,NA,NO,Cell maduration,DNA/RNA binding,CEH19760.1,100,8.84E-64,220
+TRINITY_DN44421_c2_g2_i2,,BLAST,U5-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,P29426.1,87.5,2.57E-13,62.8
+TRINITY_DN44521_c2_g1_i1,,BLAST,U12-ctenitoxin-pn1a,NA,YES,Unknown,Toxin,P0C2S8.1,90323,2.11E-47,149
+TRINITY_DN44521_c2_g1_i2,,BLAST,U12-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,P0C2S8.1,88.75,4.14E-36,120
+TRINITY_DN44580_c1_g5_i1,,BLAST,Putative neurotoxin ltdf 05-03,NA,YES,Neuromuscular process,Toxin,AKT08985.1,75309,2.47E-38,128
+TRINITY_DN44781_c4_g4_i1,K14073,BLAST,Inactive pancreatic lipase-related protein 1,3.1.1.10,YES,Lipase,Lipid metabolism,GBM04749.1,42365,9.86E-47,167
+TRINITY_DN45764_c3_g1_i1,,BLAST,Gamma-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,P59367.2,82716,6.31E-36,119
+TRINITY_DN46065_c3_g1_i1,,BLAST,U12-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,P0C2S8.1,85507,1.81E-27,99
+TRINITY_DN46065_c5_g1_i2,,BLAST,U7-ctenitoxin-pr1a,NA,YES,Neuromuscular process,Toxin,P84031.1,87755,3.87E-24,89
+TRINITY_DN46243_c2_g2_i5,,BLAST,U2-ctenitoxin-pn1b,NA,YES,Neuromuscular process,Toxin,O76198.1,41379,6.27E-18,77
+TRINITY_DN46635_c5_g1_i1,,BLAST,U12-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,P0C2S8.1,86047,2.68E-08,50.4
+TRINITY_DN46751_c3_g3_i1,,BLAST,Hemocyanin subunit 6,NA,NO,Respiration,Respiration,JAV48118.1,70588,2.71E-16,79
+TRINITY_DN46751_c3_g7_i1,,BLAST,Hemocyanin subunit 5,NA,NO,Respiration,Respiration,CAC44754.1,90598,5.44E-68,225
+TRINITY_DN47191_c0_g1_i1,,BLAST,U7-ctenitoxin-pr1a,NA,YES,Neuromuscular process,Toxin,P84031.1,93.75,3.96E-26,93.2
+TRINITY_DN47191_c1_g1_i2,,BLAST,U12-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,P0C2S8.1,87912,6.99E-44,140
+TRINITY_DN6416_c0_g1_i1,,BLAST,Putative acetylcholine esterase,NA,YES,Neuromuscular process,Toxin enhancer,JAA92947.1,52987,0,552
+TRINITY_DN45109_c4_g2_i1,K01672,kegg,Carbonic anhydrase,4.2.1.1,NO,NA,Nitrogen metabolism,NA,NA,NA,NA
+TRINITY_DN39305_c0_g1_i2,K08202,kegg,Slc22a4_5,NA,NO,Canserogenesis,DNA/RNA binding,NA,NA,NA,NA
+TRINITY_DN43960_c4_g3_i3,K01296,BLAST,Carboxypeptidase a-like protein isoform s2,3.4.17.12,YES,Protease,Degradation of polypeptides,QDC23059.1,84494,0,806
+TRINITY_DN45325_c5_g1_i2,,BLAST,Peptidylglycine alpha-hydroxylating monooxygenase,NA,NO,NA,Peptide metabolic process,JAV47979.1,24451,3.89E-06,50.8
+TRINITY_DN45985_c3_g1_i9,,BLAST,Single insulin-like growth factor-binding domain protein-2,NA,NO,Cell signal,Immune system,G4V4G0.1,48.98,6.32E-24,90.9
+TRINITY_DN30421_c0_g1_i2,K03522,kegg,Electron transfer flavoprotein alpha subunit,NA,NO,Respiration,Respiration,NA,NA,NA,NA
+TRINITY_DN44807_c0_g1_i1,K07299,kegg,Slc2a1,NA,NO,Respiration,Respiration,NA,NA,NA,NA
+TRINITY_DN43923_c1_g1_i2,K13907,kegg,Cystatin-a/b,NA,NO,Serin protease inhibitor,Endopeptidase inhibitor,NA,NA,NA,NA
+TRINITY_DN42749_c11_g1_i4,K09640,BLAST,Putative PQM protease precursor,5.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,96296,8.1E-70,213
+TRINITY_DN45469_c0_g2_i4,K12567,kegg,Titin,2.7.11.1,NO,Muscular contraction,Motor activity,NA,NA,NA,NA
+TRINITY_DN25694_c0_g1_i1,,BLAST,Putative vldl receptor,,YES,Glicanohidrolase,Hydrolase,JAA92924.1,34.84,1.82E-69,230
+TRINITY_DN28672_c0_g1_i1,,BLAST,Astacin-like metalloprotease toxin,NA,YES,Protease,Degradation of polypeptides,XP_035219845.1,80972,7.57E-152,426
+TRINITY_DN34033_c0_g1_i1,,BLAST,Leucine-rich repeat protein isoform s1,NA,NO,NA,Cell differentiation,QDC23080.1,35106,4.12E-11,65.9
+TRINITY_DN34474_c0_g1_i2,,BLAST,Putative secrin-like g-protein coupled receptor,NA,NO,Unknown,Unknown,JAA93017.1,62874,5.58E-153,443
+TRINITY_DN36607_c0_g1_i1,,BLAST,Leucine-rich repeat protein isoform s1,NA,NO,Unknown,Cell differentiation,QDC23081.1,30333,1.09E-40,148
+TRINITY_DN36635_c0_g1_i1,,BLAST,Astacin-like metalloprotease toxin,NA,YES,Protease,Degradation of polypeptides,XP_035219845.1,58423,5.39E-111,325
+TRINITY_DN36877_c0_g2_i2,K05609,BLAST,Cysteine peptidase c12 containing ubiquitin carboxy-terminal hydrolase,3.4.19.12,YES,Protease,Degradation of polypeptides,JAV48228.1,55435,1.59E-29,113
+TRINITY_DN37344_c0_g1_i2,K05695,kegg,Receptor-type tyrosine-protein phosphatase f,NA,NO,NA,Cell differentiation,CAD45190.1,31016,4.44E-09,62.4
+TRINITY_DN39203_c0_g1_i2,,BLAST,Defensin,NA,NO,Unknown,Immune system,JAV48210.1,63043,9.49E-16,68.2
+TRINITY_DN40250_c2_g1_i2,K00815,BLAST,Tyrosine aminotransferase,2.6.1.5,NO,Transaminase,Peptide metabolic process,JAC59247.1,25086,6.92E-19,91.7
+TRINITY_DN40272_c4_g1_i4,,BLAST,Venom serine protease 2,3.4.21.-,YES,Protease,Degradation of polypeptides,QDC23055.1,70.94,5.99E-125,353
+TRINITY_DN40429_c0_g3_i2,K08069,BLAST,Biotinidase,NA,YES,Hidrolase,Degradation of polypeptides,JAV48287.1,38509,3.72E-73,236
+TRINITY_DN40650_c1_g1_i1,,BLAST,Putative PQM protease precursor,21.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,93.22,7.81E-28,115
+TRINITY_DN41562_c10_g1_i1,,BLAST,Ribosome-attached membrane protein 4,NA,NO,Protein transport,Transport,JAV47911.1,87.5,1.85E-35,122
+TRINITY_DN41663_c3_g1_i1,K01332,BLAST,Serine endopeptidase,3.4.21.-,YES,Protease,Degradation of polypeptides,JAV47990.1,34138,2.71E-96,316
+TRINITY_DN41763_c2_g5_i1,,BLAST,Toxin 21 isoform e precursor,NA,YES,Neuromuscular process,Toxin,QDC23157.1,76667,1.19E-08,52
+TRINITY_DN41933_c4_g1_i5,K20017,kegg,Apoptosis regulator bcl-2,NA,NO,Cell maduration,Cell cycle regulation,JAV48289.1,29907,6.68E-09,57
+TRINITY_DN41933_c4_g1_i8,K20017,kegg,Apoptosis regulator bcl-2,NA,NO,Cell maduration,Cell cycle regulation,JAV48289.1,29907,6.8E-09,57
+TRINITY_DN42281_c1_g2_i2,K23533,kegg,Leucine-rich repeat protein isoform s1,NA,NO,Unknown,Cell differentiation,QDC23081.1,32292,5.96E-07,49.7
+TRINITY_DN42749_c11_g1_i1,,BLAST,Putative PQM protease precursor,21.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,90441,6.44E-86,254
+TRINITY_DN42749_c11_g1_i10,K09640,BLAST,Putative PQM protease precursor,21.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,91954,1.63E-115,331
+TRINITY_DN42749_c11_g1_i12,,BLAST,Putative PQM protease precursor,21.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,92248,2.9E-82,245
+TRINITY_DN42749_c11_g1_i15,,BLAST,Putative PQM protease precursor,21.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,86,2.95E-55,175
+TRINITY_DN42749_c11_g1_i8,,BLAST,Putative PQM protease precursor,21.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,90351,3.37E-70,214
+TRINITY_DN42749_c11_g1_i9,K09640,BLAST,Putative PQM protease precursor,21.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,93064,1.19E-116,334
+TRINITY_DN42944_c4_g1_i7,,BLAST,Cystine knot toxin,NA,NO,Neuromuscular process,Toxin,AGR53495.1,79688,1.83E-31,108
+TRINITY_DN42994_c4_g1_i5,,BLAST,Delta-ctenitoxin-pr2d,NA,YES,Neuromuscular process,Toxin,P83904.1,81481,7.87E-08,48.1
+TRINITY_DN43231_c7_g6_i2,K04392,BLAST,Ras-related c3 botulinum toxin substrate 1,NA,NO,Cell adhesion,ATPase / GTPase ,JAV48282.1,69.11,7.79E-95,279
+TRINITY_DN43799_c7_g1_i2,,BLAST,Serine proteinase,3.4.21.-,YES,Protease,Degradation of polypeptides,JAV47988.1,35537,8.23E-65,214
+TRINITY_DN43960_c4_g3_i3,K01296,BLAST,Carboxypeptidase a-like protein isoform s2,3.4.17.12,YES,Protease,Degradation of polypeptides,QDC23059.1,84494,0,806
+TRINITY_DN43960_c4_g4_i6,K01296,BLAST,Csa-pi kinase,3.4.17.12,YES,Protease,Degradation of polypeptides,CFW94192.1,91092,0,625
+TRINITY_DN44029_c2_g3_i1,,BLAST,U10-ctenitoxin-pn1a,3.4.21.-,YES,Protease,Degradation of polypeptides,P0C2S9.1,59701,1.2E-20,83.6
+TRINITY_DN44126_c0_g2_i2,K03331,kegg,L-xylulose reductase,1.1.1.10,NO,Oxidoreductase activity,Respiration,JAA93011.1,29592,1.17E-09,61.2
+TRINITY_DN44653_c2_g1_i2,K23909,BLAST,Putative calcium-dependent protein kinase,NA,NO,Motor activity,Ion channel,JAA92925.1,89552,4.29E-34,120
+TRINITY_DN44653_c2_g2_i1,K23909,BLAST,Putative calcium-dependent protein kinase,NA,NO,Motor activity,Ion channel,JAA92925.1,97872,1.71E-25,100
+TRINITY_DN44727_c1_g2_i2,,BLAST,Single insulin-like growth factor-binding domain protein-1,NA,NO,NA,Immune system,G4V4G0.1,44954,9.72E-21,87.4
+TRINITY_DN45129_c2_g9_i1,,BLAST,Cystine knot toxin,NA,YES,Neuromuscular process,Toxin,AGR53464.1,67826,1.76E-50,160
+TRINITY_DN45199_c2_g5_i1,,BLAST,Putative nitric oxide synthase,4.2.1.2,NO,Nitrogen metabolism,Nitrogen metabolism,JAC59248.1,71658,0,1156
+TRINITY_DN45284_c1_g2_i2,,BLAST,Peptidylglycine alpha-hydroxylating monooxygenase,NA,NO,NA,Peptide metabolic process,JAV47979.1,25321,5.24E-11,66.2
+TRINITY_DN45309_c0_g1_i6,K08069,BLAST,Biotinidase,NA,YES,Hidrolase,Degradation of polypeptides,JAV48287.1,37716,1.32E-49,176
+TRINITY_DN45309_c0_g4_i1,,BLAST,Biotinidase,NA,YES,Hidrolase,Degradation of polypeptides,JAV48287.1,40517,1.51E-22,96.3
+TRINITY_DN45796_c1_g1_i2,,BLAST,Leukocyte elastase inhibitor,NA,NO,NA,Immune system,JAV48184.1,41026,5.44E-89,282
+TRINITY_DN45916_c1_g1_i1,,BLAST,"Methylmalonic aciduria and homocystinuria type d homolog, mitochondrial",NA,NO,NA,ATPase / GTPase ,JAV48052.1,51.23,1.38E-83,256
+TRINITY_DN45985_c3_g1_i1,,BLAST,Single insulin-like growth factor-binding domain protein-1,NA,NO,NA,Immune system,G4V4G0.1,54545,6.6E-26,102
+TRINITY_DN46157_c1_g1_i4,K16353,kegg,Protein sidekick,NA,NO,Photoreception,Photoreception,GBM48678.1,36242,2.5E-13,73.6
+TRINITY_DN46657_c0_g2_i2,,BLAST,U10-ctenitoxin-pn1a,3.4.21.-,YES,Protease,Degradation of polypeptides,P0C2S9.1,84848,4.67E-11,55.8
+TRINITY_DN46751_c2_g6_i1,,BLAST,Hemocyanin subunit 4,NA,NO,Respiration,Respiration,CAC44752.1,88421,1.44E-121,361
+TRINITY_DN46949_c3_g1_i4,K06569,BLAST,Saxiphilin,NA,NO,Detoxification,Iron trasnport,JAV47753.1,44934,0,582
+TRINITY_DN46994_c2_g1_i1,K20669,kegg,Diptericin,NA,NO,NA,Immune system,JAV48285.1,44,1.62E-07,49.7
+TRINITY_DN42677_c1_g3_i1,K00503,kegg,Dopamine beta-monooxygenase,1.14.17.1,NO,NA,Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN46155_c5_g2_i4,K00471,kegg,Gamma-butyrobetaine dioxygenase,1.14.11.1,NO,Dioxygenase,Degradation of polypeptides,NA,NA,NA,NA
+TRINITY_DN47221_c10_g1_i2,K12846,kegg,Snrnp27,NA,NO,RNA splicing,DNA/RNA binding,NA,NA,NA,NA
+TRINITY_DN30421_c0_g1_i2,K03522,kegg,Electron transfer flavoprotein alpha subunit,NA,NO,Presente en venenos de serpientes,Respiration,NA,NA,NA,NA
+TRINITY_DN42281_c1_g5_i1,K04255,kegg,R-opsin,NA,NO,Fotorecepción,Photoreception,NA,NA,NA,NA
+TRINITY_DN28923_c0_g1_i1,K17310,kegg,Serum amyloid a protein,NA,YES,Agente necrotico en veneno de loxosceles reclusa,Toxin enhancer,NA,NA,NA,NA
+TRINITY_DN38749_c0_g1_i1,K10523,kegg,Speckle-type poz protein,NA,NO,Mantener estabilidad genomica (antitumoral),Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN45789_c5_g1_i1,K13703,kegg,Abhydrolase domain-containing protein 11,NA,YES,Hidrolasa,Lipid metabolism,NA,NA,NA,NA
+TRINITY_DN39856_c0_g1_i1,K08202,kegg,Slc22a4_5,NA,NO,Cancerogenesis,DNA/RNA binding,NA,NA,NA,NA
+TRINITY_DN33036_c0_g1_i3,K00207,kegg,Dihydropyrimidine dehydrogenase,1.3.1.2,NO,Catabolismo de uracilo y timina,DNA/RNA binding,NA,NA,NA,NA
+TRINITY_DN36271_c0_g1_i1,K12959,kegg,Caveolin 3,NA,NO,Es un blanco de venenos de phoneutria,Motor activity,NA,NA,NA,NA
+TRINITY_DN46536_c5_g2_i1,K17794,kegg,Mitochondrial import inner membrane translocase subunit tim23,NA,NO,Transporte intermenbrana,Amino acid transmembrane transporter,NA,NA,NA,NA
+TRINITY_DN40795_c0_g1_i2,K00507,kegg,Stearoyl-coa desaturase,1.14.19.1,NO,Anabolismo de acidos grasos,Lipid metabolism,NA,NA,NA,NA
+TRINITY_DN42272_c2_g1_i1,K23541,kegg,Tmem165,NA,NO,Maduracion de glicoproteinas,Amino acid transmembrane transporter,NA,NA,NA,NA
+TRINITY_DN1518_c0_g1_i1,K11165,BLAST,Putative cuticular protein,1.1.-.-,NO,Putative retinol dehydrogenase,Photoreception,JAA93011.1,31336,4.61E-22,97.4
+TRINITY_DN33303_c0_g1_i1,,BLAST,Putative cuticular protein,NA,NO,Putative cuticular protein,Structural,JAC59267.1,50,6.15E-14,68.2
+TRINITY_DN36838_c0_g1_i1,,BLAST,Putative cuticular protein,NA,NO,Putative cuticular protein,Structural,JAC59264.1,97531,6.27E-49,166
+TRINITY_DN37193_c0_g1_i1,K08834,BLAST,Csa-inac,NA,NO,Binding,Motor activity,CFW94186.1,84772,0,1815
+TRINITY_DN37896_c0_g1_i3,,BLAST,Putative cuticular protein,NA,NO,Putative cuticular protein,Structural,JAC59239.1,88785,3.13E-51,167
+TRINITY_DN39324_c0_g3_i1,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,89431,4.44E-75,233
+TRINITY_DN39324_c0_g3_i6,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,89431,4.3E-75,233
+TRINITY_DN39324_c0_g3_i7,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,85294,1.53E-34,127
+TRINITY_DN41377_c4_g11_i1,,BLAST,Serine proteinase,NA,YES,Protease,Degradation of polypeptides,JAV47988.1,34746,6.97E-39,142
+TRINITY_DN41550_c1_g1_i2,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,92727,7.85E-71,219
+TRINITY_DN41550_c1_g1_i3,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,83459,3.31E-80,244
+TRINITY_DN41550_c1_g1_i4,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,85294,7.23E-60,191
+TRINITY_DN41550_c1_g1_i5,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,93333,4.64E-90,270
+TRINITY_DN41550_c1_g1_i6,K04255,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,92529,3.49E-118,342
+TRINITY_DN41571_c2_g1_i11,,BLAST,Omega-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,O76201.1,76.19,3.53E-23,92.8
+TRINITY_DN41947_c4_g4_i1,,BLAST,Hemocyanin subunit 3,NA,NO,Respiration,Respiration,CAC44751.1,88496,1.06E-66,215
+TRINITY_DN42161_c4_g2_i1,K11165,BLAST,Csa-trpl2,EC:1.1.-.-,YES,Neuromuscular process,Toxin,CFW94210.1,92552,0,1242
+TRINITY_DN42161_c4_g7_i1,,BLAST,Csa-trpl2,EC:1.1.-.-,YES,Neuromuscular process,Toxin,CFW94210.1,79.36,0,536
+TRINITY_DN42196_c2_g1_i1,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,87.85,1.63E-56,192
+TRINITY_DN42749_c11_g1_i11,K09640,BLAST,Putative PQM protease precursor,NA,YES,Protease,Toxin maduration,AUI10828.1,95,4.36E-78,234
+TRINITY_DN42749_c11_g1_i17,,BLAST,Putative PQM protease precursor,NA,YES,Protease,Toxin maduration,AUI10828.1,93519,8.73E-69,210
+TRINITY_DN42749_c11_g1_i4,,BLAST,Putative PQM protease precursor,NA,YES,Protease,Toxin maduration,AUI10828.1,96296,8.1E-70,213
+TRINITY_DN43099_c4_g2_i1,,BLAST,Putative toll protein,NA,NO,Single-pass membrane receptor,Immune system,JAA92983.1,27556,1.43E-20,101
+TRINITY_DN43843_c0_g2_i1,K10402,BLAST,Putative kinesin,NA,NO,Binding,Motor activity,JAA93007.1,34824,3.33E-34,144
+TRINITY_DN44658_c4_g1_i4,,BLAST,Allene oxide synthase-lipoxygenase protein,NA,NO,Lipid metabolism,Lipid metabolism,GBM48678.1,30573,5.59E-09,60.1
+TRINITY_DN44703_c4_g6_i1,,BLAST,U9-ctenitoxin-pn1a,NA,YES,Neurotoxin,Toxin,P0C2S6.1,95122,6.2E-19,81.3
+TRINITY_DN44853_c0_g1_i1,K01049,BLAST,Putative acetylcholine esterase,3.1.1.7,YES,Neuromuscular process,Toxin enhancer,JAA92947.1,40252,6.88E-32,125
+TRINITY_DN45818_c4_g3_i1,,BLAST,U6-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,P81793.1,68235,1.08E-33,115
+TRINITY_DN45967_c0_g1_i8,K01332,BLAST,Serine proteinase,NA,YES,Protease,Degradation of polypeptides,JAV47990.1,33545,1.39E-92,308
+TRINITY_DN46342_c8_g4_i2,K02649,kegg,Phosphoinositide-3-kinase regulatory subunit alpha/beta/delta,NA,NO,Signal transductor,Autocrine regulation,JAV48142.1,47368,8.22E-06,51.2
+TRINITY_DN46568_c1_g3_i1,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,84286,4.6E-35,127
+TRINITY_DN46568_c2_g1_i3,K04255,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,91593,5.98E-156,440
+TRINITY_DN46568_c2_g1_i5,,BLAST,Rhodopsin 2,NA,NO,Phototransductor,Photoreception,CCO61974.1,90909,6E-111,324
+TRINITY_DN46581_c0_g1_i1,,BLAST,Gamma-ctenitoxin-pn1a,NA,YES,Protease,Degradation of polypeptides,P59367.2,87097,3.63E-09,53.5
+TRINITY_DN46945_c0_g1_i1,K10104,kegg,Tachylectin 5a-like isoform 1,NA,NO,Lectine,Immune system,QDC23078.1,43846,7.61E-64,207
+TRINITY_DN45469_c0_g2_i4,K12567,kegg,Titin,2.7.11.1,NO,Transporte intracelular (encontrada tambien en veneno de b. humilis),Muscular contraction,NA,NA,NA,NA
+TRINITY_DN43945_c7_g1_i3,K13805,kegg,Arrestin-2,NA,NO,Cell cycle regulation,Cell cycle regulation,NA,NA,NA,NA
+TRINITY_DN42161_c4_g2_i1,K11165,kegg,Dhrs7,EC:1.1.-.-,NO,NA,Cell differentiation,NA,NA,NA,NA
+TRINITY_DN42148_c3_g2_i1,K00002,kegg,Alcohol dehydrogenase,1.1.1.2,NO,Interconversión de alcoholes y cetonas,Lipid metabolism,NA,NA,NA,NA
+TRINITY_DN42373_c2_g3_i1,K15621,kegg,Baiap3,NA,NO,Regulacion comportamental de la ingesta de comida,Transport,NA,NA,NA,NA
+TRINITY_DN43949_c4_g2_i4,K20358,kegg,Golga2,NA,NO,Structural,Structural,NA,NA,NA,NA
+TRINITY_DN37848_c0_g1_i1,K05679,BLAST,Abc transporter sub-family g-like protein 10,NA,NO,Respiration,ATPase / GTPase ,KPM06128.1,30607,2.37E-67,229
+TRINITY_DN40429_c0_g3_i2,K08069,BLAST,Biotinidase,3.5.1.92,YES,Hydrolase,Hydrolase,JAV48287.1,38509,3.72E-73,236
+TRINITY_DN44590_c6_g1_i1,,BLAST,Defensin,NA,NO,Insulin-like growth factor binding,Cell cycle regulation,JAV48210.1,59016,1.26E-16,70.9
+TRINITY_DN44727_c1_g2_i2,,BLAST,Single insulin-like growth factor-binding domain protein-2,,NO,Insulin-like growth factor binding,Cell cycle regulation,G4V4G0.1,44954,9.72E-21,87.4
+TRINITY_DN45199_c2_g5_i1,,BLAST,Putative nitric oxide synthase,NA,NO,Nitrogen metabolism,Nitrogen metabolism,JAC59248.1,71658,0,1156
+TRINITY_DN45309_c0_g1_i6,K08069,BLAST,Biotinidase,3.5.1.92,YES,Hydrolase,Hydrolase,JAV48287.1,37716,1.32E-49,176
+TRINITY_DN45309_c0_g2_i1,,BLAST,Biotinidase,3.5.1.92,YES,Hydrolase,Hydrolase,JAV48287.1,37.73,9.75E-59,199
+TRINITY_DN45309_c0_g4_i1,,BLAST,Biotinidase,3.5.1.92,YES,Hydrolase,Hydrolase,JAV48287.1,40517,1.51E-22,96.3
+TRINITY_DN45985_c3_g1_i1,,BLAST,Single insulin-like growth factor-binding domain protein-2,NA,NO,Insulin-like growth factor binding,Immune system,CCD22033.1,54545,6.6E-26,102
+TRINITY_DN46994_c2_g1_i1,K20669,kegg,Diptericin,NA,NO,Inmmune protein,Immune system,JAV48285.1,44,1.62E-07,49.7
+TRINITY_DN44712_c10_g2_i6,K00643,kegg,5-aminolevulinate synthase,2.3.1.37,NO,El acido 5-aminolevulinic se encuentra en multiples venenos de arañas,Peptide metabolic process,NA,NA,NA,NA
+TRINITY_DN36271_c0_g1_i1,K12959,kegg,Caveolin 3,NA,NO,Es un blanco de venenos de phoneutria,Motor activity,NA,NA,NA,NA
+TRINITY_DN42455_c0_g3_i1,K14388,kegg,Solute carrier family 5,,NO,,Transport,NA,NA,NA,NA
+TRINITY_DN41642_c0_g1_i2,K12035,kegg,Tripartite motif-containing protein 71,2.3.2.27,NO,Reculacion del ciclo celular,Immune system,NA,NA,NA,NA
+TRINITY_DN28923_c0_g1_i1,K17310,kegg,Serum amyloid a protein,NA,YES,Agente necrotico en veneno de loxosceles reclusa,Toxin enhancer,NA,NA,NA,NA
+TRINITY_DN45325_c5_g1_i2,NA,BLAST,Peptidylglycine monooxygenase,NA,NO,Peptidylglycine alpha-hydroxylating monooxygenase,Peptide metabolic process,JAV47979.1,24451,3.89E-06,50.8
+TRINITY_DN18555_c0_g1_i1,,BLAST,Putative cuticular protein,NA,NO,Na,Structural,JAC59240.1,45946,1.83E-09,63.5
+TRINITY_DN30428_c0_g1_i1,K04253,BLAST,Peropsin,NA,NO,Photoreception,Photoreception,CCP46949.1,84884,0,526
+TRINITY_DN37193_c0_g1_i1,K08834,BLAST,Csa-ninac,2.7.11.1,NO,Binding,Motor activity,CFW94186.1,84772,0,1815
+TRINITY_DN37193_c0_g1_i1,K08834,kegg,Myosin iii,2.7.11.1,NO,Binding,Motor activity,JAA93018.1,27027,3.29E-10,65.5
+TRINITY_DN37193_c0_g1_i2,K08834,BLAST,Csa-ninac,2.7.11.1,NO,Binding,Motor activity,CFW94186.1,83942,0,1805
+TRINITY_DN38099_c0_g1_i2,,BLAST,Csa-trp3,NA,YES,Neurotoxin,Toxin,CFW94205.1,95062,0,974
+TRINITY_DN39324_c0_g3_i1,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,89431,4.44E-75,233
+TRINITY_DN39324_c0_g3_i3,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,85246,1.64E-70,225
+TRINITY_DN39324_c0_g3_i6,K04967,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,89431,4.3E-75,233
+TRINITY_DN39324_c0_g3_i7,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,85294,1.53E-34,127
+TRINITY_DN39587_c2_g1_i4,K00901,BLAST,Diacylglycerol kinase 1,2.7.1.107,YES,Control secretion of toxins,Toxin enhancer,JAV48204.1,35702,6.33E-89,306
+TRINITY_DN41148_c2_g1_i3,,BLAST,Metalloendopeptidase,NA,YES,Protease,Degradation of polypeptides,GBN30833.1,32753,3.11E-57,106
+TRINITY_DN41256_c6_g4_i2,,BLAST,Hypothetical protein aven_89129-1,NA,YES,Neurotoxin,Toxin,GBL86087.1,76699,7.73E-43,151
+TRINITY_DN41550_c1_g1_i2,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,92727,7.85E-71,219
+TRINITY_DN41550_c1_g1_i3,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,83459,3.31E-80,244
+TRINITY_DN41550_c1_g1_i4,,BLAST,Rhodopsin 1,NA,NO,Photoreception,Photoreception,CCO61973.1,55446,1.42E-37,133
+TRINITY_DN41550_c1_g1_i6,K04255,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,92529,3.49E-118,342
+TRINITY_DN42161_c4_g2_i1,K13803,BLAST,Csa-trpl2,NA,YES,Neurotoxin,Toxin,CFW94210.1,92552,0,1242
+TRINITY_DN42161_c4_g7_i1,,BLAST,Csa-trpl2,NA,YES,Neurotoxin,Toxin,CFW94210.1,79.36,0,536
+TRINITY_DN42196_c2_g1_i1,,BLAST,Rhodopsin 2,1.11.1.7,NO,Respiration,Oxidative stress,CCO61974.1,87.85,1.63E-56,192
+TRINITY_DN42196_c2_g1_i2,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,84956,2.37E-60,193
+TRINITY_DN42749_c11_g1_i11,K01324,BLAST,Putative PQM protease precursor,3.4.21.34,YES,Protease,Toxin maduration,AUI10828.1,95,4.36E-78,234
+TRINITY_DN42749_c11_g1_i12,K01317,BLAST,Putative PQM protease precursor,3.4.21.34,YES,Protease,Toxin maduration,AUI10828.1,92248,2.9E-82,245
+TRINITY_DN42749_c11_g1_i2,K09640,BLAST,Putative PQM protease precursor,3.4.21.34,YES,Protease,Toxin maduration,AUI10828.1,90789,1.56E-96,282
+TRINITY_DN42749_c11_g1_i4,K01344,BLAST,Putative PQM protease precursor,3.4.21.34,YES,Protease,Toxin maduration,AUI10828.1,96296,8.1E-70,213
+TRINITY_DN43450_c0_g7_i1,,BLAST,Metalloendopeptidase,NA,YES,Protease,Degradation of polypeptides,GBN30833.1,33663,2.4E-86,301
+TRINITY_DN43477_c5_g4_i3,K24465,kegg,Epidermal growth factor-like protein 7/8,NA,NO,Cell maduration,Cell differentiation,CAD45189.1,57143,2.02E-06,52.8
+TRINITY_DN43508_c3_g3_i2,K19511,BLAST,Peroxidase,NA,NO,Respiration,Oxidative stress,JAV47961.1,46774,3.85E-87,286
+TRINITY_DN44355_c2_g2_i2,,BLAST,Putative degenerin,NA,NO,Ion chanel,Ion channel,JAA92959.1,82865,0,652
+TRINITY_DN44580_c1_g5_i1,,BLAST,Putative neurotoxin ltdf 05-02,NA,YES,Neurotoxin,Toxin,AKT08984.1,75309,2.34E-38,128
+TRINITY_DN45369_c4_g11_i1,K19511,BLAST,Peroxidase,NA,NO,Respiration,Oxidative stress,JAV47961.1,44054,2.77E-113,350
+TRINITY_DN46568_c1_g3_i1,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,84286,4.6E-35,127
+TRINITY_DN46568_c2_g1_i3,K04255,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,91593,5.98E-156,440
+TRINITY_DN46568_c2_g1_i4,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,92053,3.16E-99,293
+TRINITY_DN46568_c2_g1_i5,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,90909,6E-111,324
+TRINITY_DN46568_c2_g2_i1,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,80,1.81E-46,158
+TRINITY_DN46568_c2_g3_i1,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,86408,2.15E-52,184
+TRINITY_DN46568_c2_g3_i2,,BLAST,Rhodopsin 2,NA,NO,Photoreception,Photoreception,CCO61974.1,86408,9.25E-53,184
+TRINITY_DN46671_c2_g3_i1,,BLAST,U14-ctenitoxin-pn1a,NA,YES,Neurotoxin,Toxin,P83998.1,97059,3.04E-18,72
+TRINITY_DN43945_c7_g1_i3,K13805,kegg,Arrestin-2,NA,NO,Regulador de ubiquitinacion,Cell cycle regulation,NA,NA,NA,NA
+TRINITY_DN43608_c3_g6_i1,K01590,kegg,Histidine decarboxylase,4.1.1.22,YES,Encontrado en veneno de abejas (neuro),Toxin enhancer,NA,NA,NA,NA
+TRINITY_DN45996_c3_g1_i2,K12198,kegg,Charged multivesicular body protein 5,NA,NO,Transporte de membrana,Transport,NA,NA,NA,NA
+TRINITY_DN38131_c0_g1_i1,,BLAST,Putative cuticular protein,NA,NO,Structural,Structural,JAC59267.1,65909,1.3E-15,73.2
+TRINITY_DN43713_c0_g4_i8,,BLAST,Venom protein,NA,NO,no Proteinase,Degradation of polypeptides,KFM65456.1,43038,1.97E-09,56.2
+TRINITY_DN43923_c1_g1_i2,K13907,kegg,Csta_b,NA,NO,Endopeptidase inhibitor,Endopeptidase inhibitor,NA,NA,NA,NA
+TRINITY_DN63196_c0_g1_i1,K00698,kegg,Chitin synthase,2.4.1.16,NO,Formacion de exoesqueleto,Structural,NA,NA,NA,NA
+TRINITY_DN41080_c2_g1_i3,,BLAST,U2-ctenitoxin-pn1b,NA,YES,Neuromuscular process,Toxin,O76198.1,79.13,8.7E-58,176
+TRINITY_DN41080_c2_g1_i4,,BLAST,U2-ctenitoxin-pn1b,NA,YES,Neuromuscular process,Toxin,O76198.1,91026,9.21E-47,149
+TRINITY_DN41148_c2_g1_i3,,BLAST,Astacin-like metalloprotease toxin 1,NA,YES,Protease,Degradation of polypeptides,GBN30833.1,32753,3.11E-57,106
+TRINITY_DN41256_c6_g4_i2,,BLAST,Hypothetical protein aven_89129-1,NA,YES,Neuromuscular process,Toxin,GBL86087.1,76699,7.73E-43,151
+TRINITY_DN43450_c0_g7_i1,,BLAST,Astacin-like metalloprotease toxin 1,NA,YES,Protease,Degradation of polypeptides,GBN30833.1,33663,2.4E-86,301
+TRINITY_DN43477_c5_g4_i3,K24465,kegg,Epidermal growth factor-like protein 7/8,NA,NO,Cell maduration,Cell differentiation,CAD45189.1,57143,2.02E-06,52.8
+TRINITY_DN43508_c3_g3_i2,K19511,BLAST,Peroxidase,1.11.1.7,NO,Respiration,Oxidative stress,JAV47961.1,46774,3.85E-87,286
+TRINITY_DN44421_c2_g2_i1,,BLAST,U5-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,P29426.1,87.5,1.43E-13,61.2
+TRINITY_DN45369_c4_g11_i1,K19511,BLAST,Peroxidase,1.11.1.7,NO,Respiration,Oxidative stress,JAV47961.1,44054,2.77E-113,350
+TRINITY_DN45764_c3_g1_i1,,BLAST,Gamma-ctenitoxin-pn1a,NA,YES,Neuromuscular process,Toxin,P59367.2,82716,6.31E-36,119
+TRINITY_DN46994_c2_g1_i1,K20669,kegg,Diptericin,NA,NO,NA,Immune system,JAV48285.1,44,1.62E-07,49.7
+TRINITY_DN39956_c3_g1_i2,K10799,tankyrase,Putative TRP channel,2.4.2.30,NO,Neuromuscular process,Ion channel,JAA92960.1,23361,4.18E-12,74.3
+TRINITY_DN45623_c3_g1_i9,,BLAST,Lipid exporter abca1-like protein,NA,NO,Respiration,ATPase / GTPase ,KPM07008.1,46667,2.26E-112,375
+TRINITY_DN45796_c1_g2_i8,,BLAST,Leukocyte elastase inhibitor,NA,NO,Unknown,Immune system,JAV48184.1,37.5,4.35E-70,236
+TRINITY_DN46293_c1_g1_i6,K07997,BLAST,Matrix metalloproteinase-16,3.4.24.-,YES,Proteinase,Degradation of polypeptides,JAV48033.1,39.49,6.99E-20,96.7
+TRINITY_DN30428_c0_g1_i1,K04253,BLAST,Peropsin,NA,NO,NA,Photoreception,CCP46949.1,84884,0,526
+TRINITY_DN37193_c0_g1_i1,K08834,BLAST,Csa-ninac,2.7.11.1,NO,NA,Motor activity,CFW94186.1,84772,0,1815
+TRINITY_DN39324_c0_g3_i1,,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,89431,4.44E-75,233
+TRINITY_DN39324_c0_g3_i6,,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,89431,4.3E-75,233
+TRINITY_DN39956_c3_g1_i2,,BLAST,Putative TRP channel,NA,NO,NA,Ion channel,JAA92960.1,23361,4.18E-12,74.3
+TRINITY_DN41550_c1_g1_i2,,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,92727,7.85E-71,219
+TRINITY_DN41550_c1_g1_i3,,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,83459,3.31E-80,244
+TRINITY_DN41550_c1_g1_i4,,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,85294,7.23E-60,191
+TRINITY_DN41550_c1_g1_i5,,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,93333,4.64E-90,270
+TRINITY_DN41550_c1_g1_i6,K04255,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,92529,3.49E-118,342
+TRINITY_DN42196_c2_g1_i1,,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,87.85,1.63E-56,192
+TRINITY_DN42749_c11_g1_i11,K09640,BLAST,Putative PQM protease precursor,4.4.21.-,YES,Proteinase,Toxin maduration,AUI10828.1,95,4.36E-78,234
+TRINITY_DN42749_c11_g1_i2,K09640,BLAST,Putative PQM protease precursor,4.4.21.-,YES,Proteinase,Toxin maduration,AUI10828.1,90789,1.56E-96,282
+TRINITY_DN42749_c11_g1_i4,K01344,BLAST,Putative PQM protease precursor,4.4.21.-,YES,Proteinase,Toxin maduration,AUI10828.1,96296,8.1E-70,213
+TRINITY_DN46568_c1_g3_i1,,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,84286,4.6E-35,127
+TRINITY_DN46568_c2_g1_i5,K04255,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,90909,6E-111,324
+TRINITY_DN46568_c2_g2_i1,,BLAST,Rhodopsin 2,NA,NO,NA,Photoreception,CCO61974.1,80,1.81E-46,158
+TRINITY_DN43945_c7_g1_i3,K13805,kegg,Arrestin-2,NA,NO,Cell cycle regulation,Cell cycle regulation,NA,NA,NA,NA
+TRINITY_DN38131_c0_g1_i1,,BLAST,Putative cuticular protein,NA,NO,NA,Structural,JAC59267.1,65909,1.3E-15,73.2
+TRINITY_DN39266_c0_g1_i2,,BLAST,Putative cuticular protein,NA,NO,NA,Structural,JAC59267.1,73864,3.06E-21,87.4
+TRINITY_DN42749_c11_g1_i15,K09640,BLAST,Putative pqm protease precursor,4.4.21.-,YES,Protease,Toxin maduration,AUI10828.1,86,2.95E-55,175
+TRINITY_DN43445_c1_g3_i1,K10104,BLAST,Tachylectin 5a-like isoform 1,NA,NO,Binding,Cell-cell adhesion,QDC23079.1,67273,2.68E-48,159
+TRINITY_DN44899_c4_g1_i1,K08069,BLAST,Pantetheine hydrolase,3.5.1.92,YES,Hidrolase,Degradation of polypeptides,JAV48287.1,37603,3.2E-104,326
+TRINITY_DN45207_c1_g2_i1,,BLAST,Putative cuticular protein,NA,NO,NA,Structural,JAC59240.1,52113,1.11E-11,68.6
+TRINITY_DN45764_c4_g2_i1,,BLAST,U1-ctenitoxin-pn1a,NA,YES,Neurotoxin,Toxin,P61229.1,90164,1.04E-28,103
+TRINITY_DN47013_c3_g1_i2,,BLAST,Tachylectin 5a-like isoform 1,NA,NO,Binding,Cell-cell adhesion,QDC23078.1,54128,8.85E-34,121
+TRINITY_DN47187_c3_g2_i1,,BLAST,Tachylectin 5a-like isoform 1,NA,NO,Binding,Cell-cell adhesion,QDC23079.1,66154,2.2E-21,90.1

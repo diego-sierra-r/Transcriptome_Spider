@@ -1,0 +1,869 @@
+"0","#install and load packages"
+"0","list_of_CRAN_packages <- c(""tidyverse"","
+"0","                           ""stringr"","
+"0","                           ""ggplot2"","
+"0","                           ""readr"","
+"0","                           ""ggrepel"","
+"0","                           ""ggpubr"","
+"0","                           ""pacman"","
+"0","                           ""BiocManager"")"
+"0",""
+"0","new_packages <- list_of_CRAN_packages[!(list_of_CRAN_packages %in% installed.packages()[,""Package""])]"
+"0",""
+"0","if(length(new_packages)) install.packages(new_packages)"
+"0",""
+"0","list_of_Bioconductor_packages <- c(""BiocParallel"","
+"0","                                   ""DESeq2"","
+"0","                                   ""EDASeq"","
+"0","                                   ""edgeR"","
+"0","                                   ""bigPint"")"
+"0",""
+"0","new_packages <- list_of_Bioconductor_packages[!(list_of_Bioconductor_packages %in% installed.packages()[,""Package""])]"
+"0","BiocManager::install(version = '3.15')"
+"2","'getOption(""repos"")' replaces Bioconductor standard repositories, see
+'?repositories' for details
+
+replacement repositories:
+    CRAN: https://cloud.r-project.org
+
+"
+"2","Bioconductor version 3.15 (BiocManager 1.30.18), R 4.2.1 (2022-06-23)
+"
+"2","Installation paths not writeable, unable to update packages
+  path: /usr/lib/R/library
+  packages:
+    MASS, nlme, spatial, survival
+  path: /usr/local/lib/R/site-library
+  packages:
+    ade4, adegenet, ape, BH, Biobase, BiocGenerics, BiocVersion, blob,
+    brew, brio, bslib, cachem, callr, classInt, cli, clipr, colorspace,
+    commonmark, crayon, credentials, crosstalk, curl, data.table, DBI,
+    deldir, desc, devtools, diffobj, digest, dplyr, DT, e1071, ellipsis,
+    evaluate, fansi, farver, fs, gdata, generics, GEOquery, gert,
+    ggplot2, gh, gmodels, graph, gtools, highr, hms, htmltools,
+    htmlwidgets, httpuv, httr, igraph, isoband, jquerylib, jsonlite,
+    knitr, later, lifecycle, limma, magrittr, memoise, mime, openssl,
+    pegas, permute, pillar, pixmap, pkgbuild, pkgload, plyr, processx,
+    promises, ps, R.methodsS3, R.oo, R.utils, R6, rappdirs, raster,
+    rcmdcheck, RColorBrewer, Rcpp, RCurl, remotes, rex, rlang, rmarkdown,
+    roxygen2, rprojroot, RSQLite, rversions, sass, scales, segmented,
+    seqinr, sessioninfo, sf, shiny, sp, spData, spdep, stringi, testthat,
+    tidyselect, tinytex, units, usethis, utf8, vctrs, vegan, viridisLite,
+    waldo, withr, xfun, xml2, yaml, zip
+"
+"2","Old packages: 'GenomicAlignments', 'nloptr', 'R.cache', 'terra', 'tibble'
+"
+"1","Update all/some/none? [a/s/n]: "
+"0","a"
+"2","probando la URL 'https://bioconductor.org/packages/3.15/bioc/src/contrib/GenomicAlignments_1.32.1.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 2220464 bytes (2.1 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 2.1 MB
+
+"
+"2","probando la URL 'https://cloud.r-project.org/src/contrib/nloptr_2.0.3.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 2219877 bytes (2.1 MB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 2.1 MB
+
+"
+"2","probando la URL 'https://cloud.r-project.org/src/contrib/R.cache_0.16.0.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 35287 bytes (34 KB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 34 KB
+
+"
+"2","probando la URL 'https://cloud.r-project.org/src/contrib/terra_1.6-3.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 686866 bytes (670 KB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 670 KB
+
+"
+"2","probando la URL 'https://cloud.r-project.org/src/contrib/tibble_3.1.8.tar.gz'
+"
+"2","Content type 'application/x-gzip'"
+"2"," length 672336 bytes (656 KB)
+"
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","="
+"2","
+"
+"2","downloaded 656 KB
+
+"
+"2","* installing *source* package ‘GenomicAlignments’ ...
+"
+"2","** using staged installation
+"
+"2","** libs
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG  -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/S4Vectors/include' -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/IRanges/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c IRanges_stubs.c -o IRanges_stubs.o
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG  -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/S4Vectors/include' -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/IRanges/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c R_init_GenomicAlignments.c -o R_init_GenomicAlignments.o
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG  -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/S4Vectors/include' -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/IRanges/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c S4Vectors_stubs.c -o S4Vectors_stubs.o
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG  -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/S4Vectors/include' -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/IRanges/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c cigar_utils.c -o cigar_utils.o
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG  -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/S4Vectors/include' -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/IRanges/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c coordinate_mapping_methods.c -o coordinate_mapping_methods.o
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG  -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/S4Vectors/include' -I'/home/acer/R/x86_64-pc-linux-gnu-library/4.2/IRanges/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c encodeOverlaps_methods.c -o encodeOverlaps_methods.o
+"
+"1","gcc -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o GenomicAlignments.so IRanges_stubs.o R_init_GenomicAlignments.o S4Vectors_stubs.o cigar_utils.o coordinate_mapping_methods.o encodeOverlaps_methods.o -L/usr/lib/R/lib -lR
+"
+"2","installing to /home/acer/R/x86_64-pc-linux-gnu-library/4.2/00LOCK-GenomicAlignments/00new/GenomicAlignments/libs
+"
+"2","** R
+"
+"2","** inst
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** installing vignettes
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** checking absolute paths in shared objects and dynamic libraries
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (GenomicAlignments)
+"
+"2","* installing *source* package ‘nloptr’ ...
+"
+"2","** package ‘nloptr’ successfully unpacked and MD5 sums checked
+"
+"2","** using staged installation
+"
+"1","checking whether the C++ compiler works... "
+"1","yes
+"
+"1","checking for C++ compiler default output file name... a.out
+"
+"1","checking for suffix of executables... "
+"1","
+"
+"1","checking whether we are cross compiling... "
+"1","no
+"
+"1","checking for suffix of object files... "
+"1","o
+"
+"1","checking whether the compiler supports GNU C++... "
+"1","yes
+"
+"1","checking whether g++ -std=gnu++14 accepts -g... "
+"1","yes
+"
+"1","checking for g++ -std=gnu++14 option to enable C++11 features... "
+"1","none needed
+"
+"1","checking how to run the C++ preprocessor... "
+"1","g++ -std=gnu++14 -E
+"
+"1","checking whether the compiler supports GNU C++... "
+"1","(cached) yes
+"
+"1","checking whether g++ -std=gnu++14 accepts -g... "
+"1","(cached) "
+"1","yes
+"
+"1","checking for g++ -std=gnu++14 option to enable C++11 features... "
+"1","(cached) none needed
+"
+"1","checking for pkg-config... "
+"1","/usr/bin/pkg-config
+"
+"1","checking if pkg-config knows NLopt... "
+"1","no
+"
+"1","checking for cmake... "
+"1","no
+"
+"1","
+------------------ CMAKE NOT FOUND --------------------
+
+CMake was not found on the PATH. Please install CMake:
+
+"
+"1"," - sudo yum install cmake          (Fedora/CentOS; inside a terminal)
+ - sudo apt install cmake          (Debian/Ubuntu; inside a terminal).
+ - sudo pacman -S cmake            (Arch Linux; inside a terminal).
+ - sudo brew install cmake         (MacOS; inside a terminal with Homebrew)
+ - sudo port install cmake         (MacOS; inside a terminal with MacPorts)
+
+Alternatively install CMake from: <https://cmake.org/>
+
+-------------------------------------------------------
+
+"
+"2","ERROR: configuration failed for package ‘nloptr’
+"
+"2","* removing ‘/home/acer/R/x86_64-pc-linux-gnu-library/4.2/nloptr’
+"
+"2","* restoring previous ‘/home/acer/R/x86_64-pc-linux-gnu-library/4.2/nloptr’
+"
+"2","Warning in install.packages(update[instlib == l, ""Package""], l, contriburl = contriburl,  :"
+"2","
+ "
+"2"," installation of package ‘nloptr’ had non-zero exit status
+"
+"2","* installing *source* package ‘R.cache’ ...
+"
+"2","** package ‘R.cache’ successfully unpacked and MD5 sums checked
+"
+"2","** using staged installation
+"
+"2","** R
+"
+"2","** inst
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","** building package indices
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (R.cache)
+"
+"2","* installing *source* package ‘terra’ ...
+"
+"2","** package ‘terra’ successfully unpacked and MD5 sums checked
+"
+"2","** using staged installation
+"
+"1","configure: CC: gcc
+"
+"1","configure: CXX: g++ -std=gnu++11
+"
+"1","checking for gdal-config... "
+"1","/usr/bin/gdal-config
+"
+"1","checking gdal-config usability... "
+"1","yes
+"
+"1","configure: GDAL: 3.0.4
+checking GDAL version >= 2.0.1... "
+"1","yes
+"
+"1","checking for gcc... "
+"1","gcc
+"
+"1","checking whether the C compiler works... "
+"1","yes
+"
+"1","checking for C compiler default output file name... a.out
+"
+"1","checking for suffix of executables... "
+"1","
+"
+"1","checking whether we are cross compiling... "
+"1","no
+"
+"1","checking for suffix of object files... "
+"1","o
+"
+"1","checking whether we are using the GNU C compiler... "
+"1","yes
+"
+"1","checking whether gcc accepts -g... "
+"1","yes
+"
+"1","checking for gcc option to accept ISO C89... "
+"1","none needed
+"
+"1","checking how to run the C preprocessor... "
+"1","gcc -E
+"
+"1","checking for grep that handles long lines and -e... "
+"1","/bin/grep
+"
+"1","checking for egrep... "
+"1","/bin/grep -E
+"
+"1","checking for ANSI C header files... "
+"1","yes
+"
+"1","checking for sys/types.h... "
+"1","yes
+"
+"1","checking for sys/stat.h... "
+"1","yes
+"
+"1","checking for stdlib.h... "
+"1","yes
+"
+"1","checking for string.h... "
+"1","yes
+"
+"1","checking for memory.h... "
+"1","yes
+"
+"1","checking for strings.h... "
+"1","yes
+"
+"1","checking for inttypes.h... "
+"1","yes
+"
+"1","checking for stdint.h... "
+"1","yes
+"
+"1","checking for unistd.h... "
+"1","yes
+"
+"1","checking gdal.h usability... "
+"1","yes
+"
+"1","checking gdal.h presence... "
+"1","yes
+"
+"1","checking for gdal.h... yes
+"
+"1","checking GDAL: linking with --libs only... "
+"1","yes
+"
+"1","checking GDAL: /usr/share/gdal/pcs.csv readable... "
+"1","no
+"
+"1","checking GDAL: checking whether PROJ is available for linking:... "
+"1","yes
+"
+"1","checking GDAL: checking whether PROJ is available fur running:... "
+"1","yes
+"
+"1","configure: GDAL: 3.0.4
+"
+"1","configure: pkg-config proj exists, will use it
+"
+"1","configure: using proj.h.
+"
+"1","configure: PROJ: 6.3.1
+"
+"1","checking PROJ: checking whether PROJ and sqlite3 are available for linking:... "
+"1","yes
+"
+"1","checking for geos-config... "
+"1","/usr/bin/geos-config
+"
+"1","checking geos-config usability... "
+"1","yes
+"
+"1","configure: GEOS: 3.8.0
+"
+"1","checking GEOS version >= 3.4.0... "
+"1","yes
+"
+"1","checking geos_c.h usability... "
+"1","yes
+"
+"1","checking geos_c.h presence... "
+"1","yes
+"
+"1","checking for geos_c.h... yes
+"
+"1","checking geos: linking with -L/usr/lib/x86_64-linux-gnu -lgeos_c... "
+"1","yes
+"
+"1","configure: Package CPP flags:   -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include
+"
+"1","configure: Package LIBS: -lproj   -L/usr/lib -lgdal -L/usr/lib/x86_64-linux-gnu -lgeos_c
+"
+"1","configure: creating ./config.status
+"
+"1","config.status: creating src/Makevars
+"
+"2","** libs
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c RcppExports.cpp -o RcppExports.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c RcppFunctions.cpp -o RcppFunctions.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c RcppModule.cpp -o RcppModule.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c arith.cpp -o arith.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c crs.cpp -o crs.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c distRaster.cpp -o distRaster.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c distance.cpp -o distance.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c extract.cpp -o extract.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c file_utils.cpp -o file_utils.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c focal.cpp -o focal.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c gcp.cpp -o gcp.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c gdal_algs.cpp -o gdal_algs.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c gdal_multidimensional.cpp -o gdal_multidimensional.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c gdalio.cpp -o gdalio.o
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c geodesic.c -o geodesic.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c geos_methods.cpp -o geos_methods.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c geosphere.cpp -o geosphere.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c graticule.cpp -o graticule.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c math_utils.cpp -o math_utils.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c mediancut.cpp -o mediancut.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c memory.cpp -o memory.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c ncdf.cpp -o ncdf.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c ram.cpp -o ram.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c raster_methods.cpp -o raster_methods.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c raster_stats.cpp -o raster_stats.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c rasterize.cpp -o rasterize.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c read.cpp -o read.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c read_gdal.cpp -o read_gdal.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c read_ogr.cpp -o read_ogr.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c sample.cpp -o sample.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c spatBase.cpp -o spatBase.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c spatDataframe.cpp -o spatDataframe.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c spatFactor.cpp -o spatFactor.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c spatRaster.cpp -o spatRaster.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c spatSources.cpp -o spatSources.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c spatTime.cpp -o spatTime.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c spatVector.cpp -o spatVector.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c string_utils.cpp -o string_utils.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c vecmath.cpp -o vecmath.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c vector_methods.cpp -o vector_methods.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c write.cpp -o write.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c write_gdal.cpp -o write_gdal.o
+"
+"1","g++ -std=gnu++11 -I""/usr/share/R/include"" -DNDEBUG -DHAVE_PROJ_H -I/usr/include/gdal -I/usr/include -I'/usr/local/lib/R/site-library/Rcpp/include'    -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c write_ogr.cpp -o write_ogr.o
+"
+"1","g++ -std=gnu++11 -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o terra.so RcppExports.o RcppFunctions.o RcppModule.o arith.o crs.o distRaster.o distance.o extract.o file_utils.o focal.o gcp.o gdal_algs.o gdal_multidimensional.o gdalio.o geodesic.o geos_methods.o geosphere.o graticule.o math_utils.o mediancut.o memory.o ncdf.o ram.o raster_methods.o raster_stats.o rasterize.o read.o read_gdal.o read_ogr.o sample.o spatBase.o spatDataframe.o spatFactor.o spatRaster.o spatSources.o spatTime.o spatVector.o string_utils.o vecmath.o vector_methods.o write.o write_gdal.o write_ogr.o -lproj -L/usr/lib -lgdal -L/usr/lib/x86_64-linux-gnu -lgeos_c -L/usr/lib/R/lib -lR
+"
+"2","installing to /home/acer/R/x86_64-pc-linux-gnu-library/4.2/00LOCK-terra/00new/terra/libs
+"
+"2","** R
+"
+"2","** inst
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"1","in method for ‘sds’ with signature ‘x=""stars""’: no definition for class “stars”
+in method for ‘sds’ with signature ‘x=""stars_proxy""’: no definition for class “stars_proxy”
+in method for ‘svc’ with signature ‘x=""sf""’: no definition for class “sf”
+in method for ‘coerce’ with signature ‘""stars"",""SpatRasterDataset""’: no definition for class “stars”
+in method for ‘coerce’ with signature ‘""ggmap"",""SpatRaster""’: no definition for class “ggmap”
+in method for ‘coerce’ with signature ‘""sf"",""SpatRaster""’: no definition for class “sf”
+in method for ‘coerce’ with signature ‘""sf"",""SpatVector""’: no definition for class “sf”
+in method for ‘coerce’ with signature ‘""sfc"",""SpatVector""’: no definition for class “sfc”
+in method for ‘coerce’ with signature ‘""sfg"",""SpatVector""’: no definition for class “sfg”
+in method for ‘coerce’ with signature ‘""XY"",""SpatVector""’: no definition for class “XY”
+in method for ‘coerce’ with signature ‘""im"",""SpatRaster""’: no definition for class “im”
+in method for ‘coerce’ with signature ‘""SpatVector"",""Spatial""’: no definition for class “Spatial”
+in method for ‘coerce’ with signature ‘""Spatial"",""SpatVector""’: no definition for class “Spatial”
+in method for ‘coerce’ with signature ‘""SpatialGrid"",""SpatRaster""’: no definition for class “SpatialGrid”
+in method for ‘coerce’ with signature ‘""SpatialPixels"",""SpatRaster""’: no definition for class “SpatialPixels”
+in method for ‘crs’ with signature ‘""sf""’: no definition for class “sf”
+Creating a generic function for ‘ncol’ from package ‘base’ in package ‘terra’
+in method for ‘ext’ with signature ‘x=""sf""’: no definition for class “sf”
+in method for ‘ext’ with signature ‘x=""Extent""’: no definition for class “Extent”
+in method for ‘ext’ with signature ‘x=""Raster""’: no definition for class “Raster”
+in method for ‘ext’ with signature ‘x=""Spatial""’: no definition for class “Spatial”
+in method for ‘extract’ with signature ‘x=""SpatRaster"",y=""sf""’: no definition for class “sf”
+in method for ‘mask’ with signature ‘x=""SpatRaster"",mask=""sf""’: no definition for class “sf”
+in method for ‘lines’ with signature ‘x=""leaflet""’: no definition for class “leaflet”
+in method for ‘points’ with signature ‘x=""leaflet""’: no definition for class “leaflet”
+in method for ‘rast’ with signature ‘x=""stars""’: no definition for class “stars”
+in method for ‘rast’ with signature ‘x=""stars_proxy""’: no definition for class “stars_proxy”
+in method for ‘rasterize’ with signature ‘x=""sf"",y=""SpatRaster""’: no definition for class “sf”
+in method for ‘show’ with signature ‘""Rcpp_SpatDataFrame""’: no definition for class “Rcpp_SpatDataFrame”
+in method for ‘show’ with signature ‘""Rcpp_SpatCategories""’: no definition for class “Rcpp_SpatCategories”
+in method for ‘geomtype’ with signature ‘x=""Spatial""’: no definition for class “Spatial”
+in method for ‘vect’ with signature ‘x=""Spatial""’: no definition for class “Spatial”
+in method for ‘vect’ with signature ‘x=""sf""’: no definition for class “sf”
+in method for ‘vect’ with signature ‘x=""sfc""’: no definition for class “sfc”
+in method for ‘vect’ with signature ‘x=""XY""’: no definition for class “XY”
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","*** copying figures
+"
+"2","** building package indices
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** checking absolute paths in shared objects and dynamic libraries
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (terra)
+"
+"2","* installing *source* package ‘tibble’ ...
+"
+"2","** package ‘tibble’ successfully unpacked and MD5 sums checked
+"
+"2","** using staged installation
+"
+"2","** libs
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c attributes.c -o attributes.o
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c coerce.c -o coerce.o
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c init.c -o init.o
+"
+"1","gcc -I""/usr/share/R/include"" -DNDEBUG      -fpic  -g -O2 -fdebug-prefix-map=/build/r-base-asoVQd/r-base-4.2.1=. -fstack-protector-strong -Wformat -Werror=format-security -Wdate-time -D_FORTIFY_SOURCE=2  -c matrixToDataFrame.c -o matrixToDataFrame.o
+"
+"1","gcc -shared -L/usr/lib/R/lib -Wl,-Bsymbolic-functions -Wl,-z,relro -o tibble.so attributes.o coerce.o init.o matrixToDataFrame.o -L/usr/lib/R/lib -lR
+"
+"2","installing to /home/acer/R/x86_64-pc-linux-gnu-library/4.2/00LOCK-tibble/00new/tibble/libs
+"
+"2","** R
+"
+"2","** inst
+"
+"2","** byte-compile and prepare package for lazy loading
+"
+"2","** help
+"
+"2","*** installing help indices
+"
+"2","*** copying figures
+"
+"2","** building package indices
+"
+"2","** installing vignettes
+"
+"2","** testing if installed package can be loaded from temporary location
+"
+"2","** checking absolute paths in shared objects and dynamic libraries
+"
+"2","** testing if installed package can be loaded from final location
+"
+"2","** testing if installed package keeps a record of temporary installation path
+"
+"2","* DONE (tibble)
+"
+"2","
+"
+"2",""
+"2","The downloaded source packages are in
+	‘/tmp/RtmpeV2SOi/downloaded_packages’"
+"2",""
+"2","
+"
+"0","if(length(new_packages)) BiocManager::install(new_packages, version = ""3.15"")"
+"0",""
+"0","pacman::p_load(c(list_of_Bioconductor_packages,list_of_CRAN_packages), install = F, character.only = T, update = F)"
+"2","Warning in pacman::p_load(c(list_of_Bioconductor_packages, list_of_CRAN_packages),  :"
+"2","
+ "
+"2"," Failed to install/load:
+tidyverse
+"

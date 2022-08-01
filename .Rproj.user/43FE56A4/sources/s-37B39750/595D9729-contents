@@ -1,0 +1,25 @@
+dds <- DESeqDataSetFromMatrix(countData=select(CountData,3:10),
+                              colData=filter(Coldata,Grupo_intra %in% c("FT","Fmix")),
+                              design =  ~ DIET)
+register(MulticoreParam(7)) 
+keep <- rowSums(counts(dds)) >= 10 #prefliter
+dds <- dds[keep,]
+dds <- DESeq(dds, parallel = T)
+DESeq2 <- results(dds, alpha = 0.05, lfcThreshold = 2)
+treatment = str_replace_all(DESeq2@elementMetadata$description[2],
+                            regex("\\w+\\s\\w+\\s\\w+\\s\\(\\w+\\):\\s+"),"")
+DESeq2 <- DESeq2 %>% as.data.frame() %>% na.omit()
+DESeq2$differex <- "Not significant"
+DESeq2$differex[DESeq2$log2FoldChange >= 2 & DESeq2$padj <= 0.05 ] <- "UP"
+DESeq2$differex[DESeq2$log2FoldChange <= -2 & DESeq2$padj <= 0.05] <- "DOWN"
+DESeq2$Comparation = as.factor(treatment)
+DESeq2$Contig_Name = row.names(DESeq2)
+row.names(DESeq2) <- NULL
+DESeq2 <- select(DESeq2,Contig_Name, everything())
+
+FG_Fmix <- DESeq2
+
+for (i in sliced_dataframes) {
+  print(names(i))
+}
+
