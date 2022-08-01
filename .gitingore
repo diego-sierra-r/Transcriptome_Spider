@@ -1,11 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 .Rproj.user/
 *R.proj
 *html
->>>>>>> 58beabd2... Update .gitignore html
-=======
-^R.proj
-R.proj$
->>>>>>> ef0958414534221234816075ef1d5d711d8d05b4
