@@ -67,19 +67,38 @@ Coldata <- read.delim(paste0(dataPath,"/Samples_information.csv"),
 
 ```{r, message=FALSE}
 
-treatments <- colnames(CountData) %>% 
-  str_replace_all(.,regex("[\\d]"),"") %>% 
-  str_replace_all(.,regex("F|M"),"") %>% 
-  as.factor() %>%
-  levels() #lista de posibles tratamientso
+create_comb <- function(granulate) {
+  if (granulate == FALSE) {
+    treatments <- colnames(CountData) %>%
+      str_replace_all(.,regex("[\\d]"),"") %>% 
+      str_replace_all(.,regex("F|M"),"") %>% 
+      as.factor() %>%
+      levels() #lista de posibles tratamientso
+    
+    combinations <- gtools::combinations(n = 3,r = 2,v=treatments,repeats.allowed = F) %>%
+      as.data.frame() %>% 
+      arrange(V1,V2) 
+    return(combinations)
+  }else {
+    treatments <- colnames(CountData) %>%
+      str_replace_all(.,regex("[\\d]"),"") %>% 
+      as.factor() %>%
+      levels() #lista de posibles tratamientso
+    
+    combinations <- gtools::combinations(n = 6,r = 2,v=treatments,repeats.allowed = F) %>%
+      as.data.frame() %>% 
+      arrange(V1,V2) 
+    return(combinations)
+    
+  }
+}
 
-combinations <- gtools::combinations(n = 3,r = 2,v=treatments,repeats.allowed = F) %>%
-  as.data.frame() %>% 
-  arrange(V1,V2) # combinacion entres los distintos tratamientos
 
 #funcion para slice el dataframe
 slice_countdata <- function(countData, index) {
-  combinations <- gtools::combinations(n=3,r=2,v=treatments,repeats.allowed = F) %>%
+  combinations <- create_comb(granulate = F) %>% 
+  #combinations <- gtools::combinations(n=3,r=2,v=treatments,repeats.allowed = F) %>%
+    #ToDo crear condicional basado en create_comb
     as.data.frame() %>% arrange(V1,V2)
   combination <- as.data.frame(t(combinations))[,index]
   
@@ -149,7 +168,7 @@ for (i in sliced_dataframes) {
                                               col =
                                               filter(Coldata,
                                                      grepl(col_index,Grupo_intra)), 
-                                              design = as.formula(" ~ SEX + DIET"))
+                                              design = as.formula(" ~ Grupo_intra"))
   counter <- counter +1
   print(glue("Differential expression between {names(sliced_dataframes)[counter]} done. \n {counter}/{length(sliced_dataframes)}"))
 }
