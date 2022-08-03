@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2022-08-02" />
+<meta name="date" content="2022-08-03" />
 
 <title>DGE Phoneutria</title>
 
@@ -364,7 +364,7 @@ pre code {
 
 <h1 class="title toc-ignore">DGE Phoneutria</h1>
 <h4 class="author"></h4>
-<h4 class="date">2022-08-02</h4>
+<h4 class="date">2022-08-03</h4>
 
 </div>
 
@@ -421,7 +421,7 @@ BiocManager::install(version = &#39;3.15&#39;)</code></pre>
 ##     sessioninfo, sf, shiny, sp, spData, spdep, stringi, testthat, tibble,
 ##     tidyselect, tinytex, units, usethis, utf8, vctrs, vegan, viridisLite,
 ##     waldo, withr, xfun, xml2, yaml, zip</code></pre>
-<pre><code>## Old packages: &#39;edgeR&#39;, &#39;nloptr&#39;</code></pre>
+<pre><code>## Old packages: &#39;edgeR&#39;, &#39;MASS&#39;, &#39;nloptr&#39;</code></pre>
 <pre class="r"><code>if(length(new_packages)) BiocManager::install(new_packages, version = &quot;3.15&quot;,update = F)
 
 pacman::p_load(c(list_of_Bioconductor_packages,list_of_CRAN_packages), install = F, character.only = T, update = F)</code></pre>
@@ -493,7 +493,7 @@ set_diet_names &lt;- function() {
 
   
 # DE SEX 
-DE &lt;- function(count, col, design) {
+DE &lt;- function(count, col, design, lfc) {
   dds &lt;- DESeqDataSetFromMatrix(countData=count,
                                 colData=col,
                                 design = design)
@@ -501,13 +501,13 @@ DE &lt;- function(count, col, design) {
   keep &lt;- rowSums(counts(dds)) &gt;= 10 #prefliter
   dds &lt;- dds[keep,]
   dds &lt;- DESeq(dds, parallel = T)
-  DESeq2 &lt;- results(dds, alpha = 0.05, lfcThreshold = 2)
+  DESeq2 &lt;- results(dds, alpha = 0.05, lfcThreshold = lfc[2])
   treatment = str_replace_all(DESeq2@elementMetadata$description[2],
             regex(&quot;\\w+\\s\\w+\\s\\w+\\s\\(\\w+\\):\\s+&quot;),&quot;&quot;)
   DESeq2 &lt;- DESeq2 %&gt;% as.data.frame() %&gt;% na.omit()
   DESeq2$differex &lt;- &quot;Not significant&quot;
-  DESeq2$differex[DESeq2$log2FoldChange &gt;= 2 &amp; DESeq2$padj &lt;= 0.05 ] &lt;- &quot;UP&quot;
-  DESeq2$differex[DESeq2$log2FoldChange &lt;= -2 &amp; DESeq2$padj &lt;= 0.05] &lt;- &quot;DOWN&quot;
+  DESeq2$differex[DESeq2$log2FoldChange &gt;= lfc[2] &amp; DESeq2$padj &lt;= 0.05 ] &lt;- &quot;UP&quot;
+  DESeq2$differex[DESeq2$log2FoldChange &lt;= lfc[1] &amp; DESeq2$padj &lt;= 0.05] &lt;- &quot;DOWN&quot;
   DESeq2$Comparation = as.factor(treatment)
   DESeq2$Contig_Name = row.names(DESeq2)
   row.names(DESeq2) &lt;- NULL
@@ -517,11 +517,12 @@ DE &lt;- function(count, col, design) {
 }
 
 
-AutoDE &lt;- function(between) {
+AutoDE &lt;- function(between, lfc) {
   if (between == &quot;SEX&quot;) {
     DESeq2_sex &lt;- DE(count = CountData,
                      col = Coldata, 
-                     design = as.formula(&quot;~ SEX&quot;)) #Supplementary Table S2.xlsx
+                     design = as.formula(&quot;~ SEX&quot;),
+                     lfc = lfc) #Supplementary Table S2.xlsx
     write.xlsx(DESeq2_sex[1], paste0(getwd(),&quot;/Data/Supplementary Table S2.xlsx&quot;)|&gt; str_replace(&quot;/scripts&quot;,&quot;&quot;))
     return(DESeq2_sex)
   }else if (between == &quot;DIET wide&quot;) {
@@ -546,7 +547,8 @@ AutoDE &lt;- function(between) {
                                               col =
                                               filter(Coldata,
                                                      grepl(col_index,Grupo_intra)), 
-                                              design = as.formula(&quot; ~ DIET + SEX&quot;))
+                                              design = as.formula(&quot; ~ SEX + DIET&quot;),
+                                              lfc = lfc)
       counter &lt;- counter +1
       print(glue(&quot;Differential expression between {names(sliced_dataframes)[counter]} done. \n {counter}/{length(sliced_dataframes)}&quot;))
       }
@@ -574,7 +576,8 @@ AutoDE &lt;- function(between) {
                                               col =
                                               filter(Coldata,
                                                      grepl(col_index,Grupo_intra)), 
-                                              design = as.formula(&quot; ~ Grupo_intra&quot;))
+                                              design = as.formula(&quot; ~ Grupo_intra&quot;),
+                                              lfc = lfc)
       counter &lt;- counter +1
       print(glue(&quot;Differential expression between {names(sliced_dataframes)[counter]} done. \n {counter}/{length(sliced_dataframes)}&quot;))
       }
@@ -583,15 +586,16 @@ AutoDE &lt;- function(between) {
   }
   
 }
-DESeq2_sex &lt;-  AutoDE(between = &quot;SEX&quot;)
-DESeq2_diet_wide &lt;-  AutoDE(between = &quot;DIET wide&quot;)</code></pre>
+lfc = c(-1.5,1.5)
+DESeq2_sex &lt;-  AutoDE(between = &quot;SEX&quot;,lfc = c(-1.5,1.5))
+DESeq2_diet_wide &lt;-  AutoDE(between = &quot;DIET wide&quot;, lfc = c(-1.5,1.5))</code></pre>
 <pre><code>## Differential expression between G_v._mix done. 
 ## 1/3
 ## Differential expression between G_v._T done. 
 ## 2/3
 ## Differential expression between mix_v._T done. 
 ## 3/3</code></pre>
-<pre class="r"><code>DESeq2_diet_granulate &lt;-  AutoDE(between = &quot;DIET granulate&quot;)</code></pre>
+<pre class="r"><code>DESeq2_diet_granulate &lt;-  AutoDE(between = &quot;DIET granulate&quot;,lfc = c(-1.5,1.5))</code></pre>
 <pre><code>## Differential expression between FG_v._Fmix done. 
 ## 1/15
 ## Differential expression between FG_v._FT done. 
@@ -631,45 +635,74 @@ bind_DE &lt;- function(by) {
     for (i in DESeq2_diet_wide) {
       x[[length(x)+1]] &lt;- as.data.frame(i[1])
       }
-    for (i in 1:length(x)) {
-      DE&lt;- bind_rows(x[i]) 
-    }
-    DE &lt;- DE %&gt;% bind_rows(as.data.frame(DESeq2_sex[1]))
+      DE &lt;- list()
+      for (j in x) {
+        DE[[length(DE)+1]]&lt;- as.data.frame(j)
+      }
+      DE &lt;-bind_rows(DE)
+      DE &lt;- DE %&gt;% bind_rows(as.data.frame(DESeq2_sex[1]))
     return(DE)
     }else if (by == &quot;granulate&quot;) {
       x &lt;- list()
-    for (i in DESeq2_diet_granulate) {
-      x[[length(x)+1]] &lt;- as.data.frame(i[1])
+      for (i in DESeq2_diet_granulate) {
+        x[[length(x)+1]] &lt;- i[1]
       }
-    for (i in 1:length(x)) {
-      DE&lt;- bind_rows(x[i]) 
-    }
-    DE &lt;- DE %&gt;% bind_rows(as.data.frame(DESeq2_sex[1]))
+      DE &lt;- list()
+      for (j in x) {
+        DE[[length(DE)+1]]&lt;- as.data.frame(j)
+      }
+      DE &lt;-bind_rows(DE)
+      DE &lt;- DE %&gt;% bind_rows(as.data.frame(DESeq2_sex[1]))
     return(DE)
     }
 }
+
   
 DE_diet_binded &lt;- bind_DE(by = &quot;granulate&quot;)
 
 Annot &lt;-read.csv(paste0(dataPath,&quot;/ev_filtered_without_dup_for_cat.csv&quot;))
 DE_filtered &lt;- filter(DE_diet_binded, differex != &quot;Not significant&quot;)
 DE_merged &lt;- merge(x = DE_filtered, y = Annot, by = &quot;Contig_Name&quot;, all.x= T )
-DE_merged &lt;- DE_merged[!duplicated(DE_merged$Contig_Name),]</code></pre>
+DE_merged &lt;- DE_merged[!duplicated(DE_merged$Contig_Name),]
+DE_annoted_and_DE &lt;- filter(DE_merged, grepl(&quot;^K&quot;, Kegg_code) | evalue &lt;= 2.20e-15)
+DE_annoted_and_venomrelated &lt;- filter(DE_annoted_and_DE, venom_related == &quot;YES&quot;)
+
+
+DE_merged_diets &lt;- merge(x = DE_filtered, y = Annot, by = &quot;Contig_Name&quot;, all.x= T ) %&gt;% filter(.,Comparation != &quot;SEX Male vs Female&quot;)
+DE_merged_diets &lt;- DE_merged_diets[!duplicated(DE_merged_diets$Contig_Name),]
+
+DE_annoted_diets &lt;-  filter(DE_merged_diets, grepl(&quot;^K&quot;, Kegg_code) | evalue &lt;= 2.20e-15) %&gt;% filter(., differex != &quot;Not significant&quot;)
+
+DE_annoted_and_DE_diets &lt;- DE_annoted_diets %&gt;% filter(.,venom_related == &quot;YES&quot;)</code></pre>
 <hr />
 <ul>
-<li><p>Se consideraron 17369 transcritos para la expresion
-diferencial.</p></li>
-<li><p>Mostraron expresion diferencial: 86.</p></li>
-<li><p>Mostraron expresion diferencial y fueron anotados: 41.</p></li>
-<li><p>Mostraron expresion diferencial y estan relacionados con la
-produccion de veneno: 18 .</p>
-<ul>
-<li><p>Neurotoxins: 9.</p></li>
-<li><p>Serine endopeptidases: 2</p></li>
-<li><p>Metalloproteases: 0</p></li>
-<li><p>Others: 7</p></li>
-</ul></li>
+<li>Se consideraron 21803 transcritos para la expresion diferencial.
+//</li>
+<li>Mostraron expresion diferencial: 214. //</li>
+<li>Mostraron expresion diferencial y fueron anotados: 104. (conteo =
+104) //</li>
+<li>Mostraron expresion diferencial y estan relacionados con la
+produccion de veneno: 55 (Conteo = 55).//</li>
 </ul>
+<pre class="r"><code>Neurotoxins &lt;- filter(DE_annoted_and_DE, New_cathegories == &quot;Neurotoxin&quot;)
+Serine &lt;- filter(DE_annoted_and_DE, New_cathegories == &quot;Serine endopeptidase&quot;)
+Metalloproteases &lt;- filter(DE_annoted_and_DE, New_cathegories == &quot;Metalloprotease toxin&quot;)
+Others &lt;- filter(DE_annoted_and_DE, New_cathegories == &quot;Other proteins&quot;)</code></pre>
+<ul>
+<li><p>Neurotoxins: 27</p></li>
+<li><p>Serine endopeptidases: 14</p></li>
+<li><p>Metalloproteases: 5</p></li>
+<li><p>Others: 9</p></li>
+</ul>
+<div id="dietas" class="section level3">
+<h3>Dietas</h3>
+<p>-numero de transcritos diferencialmente expresados al comparar
+dietas: 195.</p>
+<p>-numero de transcritos direrencialemente expresados y anotados al
+comparar dietas: 101</p>
+<p>-numero de transcritos direrencialemente expresados, anotados y
+relacionados a veneno al comparar dietas: 55</p>
+</div>
 </div>
 
 
