@@ -217,7 +217,6 @@ DESeq2_sex <-  AutoDE(between = "SEX",lfc = c(-1.5,1.5))
 DESeq2_diet_wide <-  AutoDE(between = "DIET wide", lfc = c(-1.5,1.5))
 DESeq2_diet_granulate <-  AutoDE(between = "DIET granulate",lfc = c(-1.5,1.5))
 
-write.xlsx(DESeq2_sex[1], paste0(getwd(),"/Data/Supplementary Table S2.xlsx")|> str_replace("/scripts",""))
 
 
 ```
