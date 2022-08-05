@@ -1,0 +1,4 @@
+"0","Neurotoxins <- filter(DE_annoted_and_DE, New_cathegories == ""Neurotoxin"")"
+"0","Serine <- filter(DE_annoted_and_DE, New_cathegories == ""Serine endopeptidase"")"
+"0","Metalloproteases <- filter(DE_annoted_and_DE, New_cathegories == ""Metalloprotease toxin"")"
+"0","Others <- filter(DE_annoted_and_DE, New_cathegories == ""Other proteins"")"

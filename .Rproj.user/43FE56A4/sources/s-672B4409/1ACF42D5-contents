@@ -1,0 +1,313 @@
+---
+title: "DGE Phoneutria"
+author: ""
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = T)
+knitr::opts_knit$set(root.dir = getwd())
+```
+
+
+
+
+```{r}
+#install and load packages
+list_of_CRAN_packages <- c("tidyverse",
+                           "combinat",
+                           "openxlsx",
+                           "stringr",
+                           "ggplot2",
+                           "readr",
+                           "magrittr",
+                           "ggrepel",
+                           "ggpubr",
+                           "pacman",
+                           "glue",
+                           "BiocManager")
+
+new_packages <- list_of_CRAN_packages[!(list_of_CRAN_packages %in% installed.packages()[,"Package"])]
+
+if(length(new_packages)) install.packages(new_packages)
+
+list_of_Bioconductor_packages <- c("BiocParallel",
+                                   "DESeq2",
+                                   "EDASeq",
+                                   "edgeR",
+                                   "bigPint")
+
+new_packages <- list_of_Bioconductor_packages[!(list_of_Bioconductor_packages %in% installed.packages()[,"Package"])]
+BiocManager::install(version = '3.15')
+if(length(new_packages)) BiocManager::install(new_packages, version = "3.15",update = F)
+
+pacman::p_load(c(list_of_Bioconductor_packages,list_of_CRAN_packages), install = F, character.only = T, update = F)
+```
+
+
+## Differential expression
+
+```{r}
+dataPath <- paste0(getwd(),"/Data")|> str_replace("/scripts","")
+CountData <-read.csv(paste0(dataPath,"/HTSeqcount_EDITED_mapeo_clean_ALL_AraBAN.txt"), sep = "\t")
+
+CountData_row_names <- CountData |> dplyr::select(Reference)
+base::row.names(CountData) <- CountData_row_names$Reference
+CountData <-CountData[,-1]
+colnames(CountData) %<>% 
+  str_remove(pattern = "HTSeqcount_mapeo_cleanAraBAN") %>% 
+  str_remove(pattern = ".bam.txt")
+
+
+Coldata <- read.delim(paste0(dataPath,"/Samples_information.csv"), 
+                      sep = ",",
+                      stringsAsFactors = T)
+```
+
+```{r, message=FALSE}
+
+create_comb <- function(granulate) {
+  if (granulate == FALSE) {
+    treatments <- colnames(CountData) %>%
+      str_replace_all(.,regex("[\\d]"),"") %>% 
+      str_replace_all(.,regex("F|M"),"") %>% 
+      as.factor() %>%
+      levels() #lista de posibles tratamientso
+    
+    combinations <- gtools::combinations(n = 3,r = 2,v=treatments,repeats.allowed = F) %>%
+      as.data.frame() %>% 
+      arrange(V1,V2) 
+    return(combinations)
+  }else {
+    treatments <- colnames(CountData) %>%
+      str_replace_all(.,regex("[\\d]"),"") %>% 
+      as.factor() %>%
+      levels() #lista de posibles tratamientso
+    
+    combinations <- gtools::combinations(n = 6,r = 2,v=treatments,repeats.allowed = F) %>%
+      as.data.frame() %>% 
+      arrange(V1,V2) 
+    return(combinations)
+    
+  }
+}
+
+#combinations <- create_comb(granulate = F) %>% 
+  #combinations <- gtools::combinations(n=3,r=2,v=treatments,repeats.allowed = F) %>%
+    #ToDo crear condicional basado en create_comb
+#as.data.frame() %>% arrange(V1,V2)
+
+#funcion para slice el dataframe
+slice_countdata <- function(countData, index) {
+
+  combination <- as.data.frame(t(combinations))[,index]
+  
+  treatment1 <- ifelse(str_detect(colnames(CountData),combination[1]) |
+                     str_detect(colnames(CountData),combination[2]),TRUE,FALSE)
+  
+  slice_countdata <- CountData[treatment1]
+  return(slice_countdata)
+}
+
+set_diet_names <- function() {
+  names_sliced_dt <- paste0(as.data.frame(t(combinations))) %>%
+    str_replace_all(., regex("([^A-Za-z\\s])") ,'') %>%
+    str_replace_all(.,"c","") %>% str_replace_all(" ", "_v._")
+}
+
+
+  
+# DE SEX 
+DE <- function(count, col, design, lfc) {
+  dds <- DESeqDataSetFromMatrix(countData=count,
+                                colData=col,
+                                design = design)
+  register(MulticoreParam(7)) 
+  keep <- rowSums(counts(dds)) >= 10 #prefliter
+  dds <- dds[keep,]
+  dds <- DESeq(dds, parallel = T)
+  DESeq2 <- results(dds, alpha = 0.05, lfcThreshold = lfc[2])
+  treatment = str_replace_all(DESeq2@elementMetadata$description[2],
+            regex("\\w+\\s\\w+\\s\\w+\\s\\(\\w+\\):\\s+"),"")
+  DESeq2 <- DESeq2 %>% as.data.frame() %>% na.omit()
+  DESeq2$differex <- "Not significant"
+  DESeq2$differex[DESeq2$log2FoldChange >= lfc[2] & DESeq2$padj <= 0.05 ] <- "UP"
+  DESeq2$differex[DESeq2$log2FoldChange <= lfc[1] & DESeq2$padj <= 0.05] <- "DOWN"
+  DESeq2$Comparation = as.factor(treatment)
+  DESeq2$Contig_Name = row.names(DESeq2)
+  row.names(DESeq2) <- NULL
+  DESeq2 <- select(DESeq2,Contig_Name, everything())
+  
+  return(list(DESeq2,col, design, count))
+}
+
+
+AutoDE <- function(between, lfc) {
+  if (between == "SEX") {
+    DESeq2_sex <- DE(count = CountData,
+                     col = Coldata, 
+                     design = as.formula("~ SEX"),
+                     lfc = lfc) #Supplementary Table S2.xlsx
+    write.xlsx(DESeq2_sex[1], paste0(getwd(),"/Results_DE/Supplementary Table S2.xlsx")|> str_replace("/scripts",""))
+    return(DESeq2_sex)
+  }else if (between == "DIET wide") {
+    combinations <<- create_comb(granulate = F) %>% 
+    as.data.frame() %>% arrange(V1,V2)
+    counter <- 0
+    sliced_dataframes <- list()
+    for (i in as.data.frame(t(combinations))) { #crear dataframe para expresion diferenciasl por dieta
+      counter <- counter +1
+      slice <- slice_countdata(countData = CountData, index = counter)
+      sliced_dataframes[[length(sliced_dataframes)+1]] <- slice
+      rm(slice)
+      
+    }
+    names(sliced_dataframes) <- set_diet_names()
+    counter <- 0
+    DESeq2_diets <- list()
+    for (i in sliced_dataframes) {
+      col_index <- paste(as.data.frame(t(combinations))[[counter+1]][1],
+                         as.data.frame(t(combinations))[[counter+1]][2],sep = "|")
+      DESeq2_diets[[length(DESeq2_diets)+1]] <- DE(count = i,
+                                              col =
+                                              filter(Coldata,
+                                                     grepl(col_index,Grupo_intra)), 
+                                              design = as.formula(" ~ SEX + DIET"),
+                                              lfc = lfc)
+      counter <- counter +1
+      print(glue("Differential expression between {names(sliced_dataframes)[counter]} done. \n {counter}/{length(sliced_dataframes)}"))
+      }
+    names(DESeq2_diets)<- set_diet_names()
+    return(DESeq2_diets)
+  }else if (between == "DIET granulate") {
+    combinations <<- create_comb(granulate = T) %>% 
+    as.data.frame() %>% arrange(V1,V2)
+    counter <- 0
+    sliced_dataframes <- list()
+    for (i in as.data.frame(t(combinations))) { #crear dataframe para expresion diferenciasl por dieta
+      counter <- counter +1
+      slice <- slice_countdata(countData = CountData, index = counter)
+      sliced_dataframes[[length(sliced_dataframes)+1]] <- slice
+      rm(slice)
+      
+    }
+    names(sliced_dataframes) <- set_diet_names()
+    counter <- 0
+    DESeq2_diets <- list()
+    for (i in sliced_dataframes) {
+      col_index <- paste(as.data.frame(t(combinations))[[counter+1]][1],
+                         as.data.frame(t(combinations))[[counter+1]][2],sep = "|")
+      DESeq2_diets[[length(DESeq2_diets)+1]] <- DE(count = i,
+                                              col =
+                                              filter(Coldata,
+                                                     grepl(col_index,Grupo_intra)), 
+                                              design = as.formula(" ~ Grupo_intra"),
+                                              lfc = lfc)
+      counter <- counter +1
+      print(glue("Differential expression between {names(sliced_dataframes)[counter]} done. \n {counter}/{length(sliced_dataframes)}"))
+      }
+    names(DESeq2_diets)<- set_diet_names()
+    return(DESeq2_diets)
+  }
+  
+}
+lfc = c(-1.5,1.5)
+DESeq2_sex <-  AutoDE(between = "SEX",lfc = c(-1.5,1.5))
+DESeq2_diet_wide <-  AutoDE(between = "DIET wide", lfc = c(-1.5,1.5))
+DESeq2_diet_granulate <-  AutoDE(between = "DIET granulate",lfc = c(-1.5,1.5))
+
+write.xlsx(DESeq2_sex[1], paste0(getwd(),"/Data/Supplementary Table S2.xlsx")|> str_replace("/scripts",""))
+
+
+```
+
+```{r}
+## Anotacion
+
+bind_DE <- function(by) {
+  if (by == "wide") {
+    x <- list()
+    for (i in DESeq2_diet_wide) {
+      x[[length(x)+1]] <- as.data.frame(i[1])
+      }
+      DE <- list()
+      for (j in x) {
+        DE[[length(DE)+1]]<- as.data.frame(j)
+      }
+      DE <-bind_rows(DE)
+      DE <- DE %>% bind_rows(as.data.frame(DESeq2_sex[1]))
+    return(DE)
+    }else if (by == "granulate") {
+      x <- list()
+      for (i in DESeq2_diet_granulate) {
+        x[[length(x)+1]] <- i[1]
+      }
+      DE <- list()
+      for (j in x) {
+        DE[[length(DE)+1]]<- as.data.frame(j)
+      }
+      DE <-bind_rows(DE)
+      DE <- DE %>% bind_rows(as.data.frame(DESeq2_sex[1]))
+    return(DE)
+    }
+}
+
+  
+DE_diet_binded <- bind_DE(by = "granulate")
+
+Annot <-read.csv(paste0(dataPath,"/ev_filtered_without_dup_for_cat.csv"))
+DE_filtered <- filter(DE_diet_binded, differex != "Not significant")
+DE_merged <- merge(x = DE_filtered, y = Annot, by = "Contig_Name", all.x= T )
+DE_merged <- DE_merged[!duplicated(DE_merged$Contig_Name),]
+DE_annoted_and_DE <- filter(DE_merged, grepl("^K", Kegg_code) | evalue <= 2.20e-15)
+DE_annoted_and_venomrelated <- filter(DE_annoted_and_DE, venom_related == "YES")
+
+
+DE_merged_diets <- merge(x = DE_filtered, y = Annot, by = "Contig_Name", all.x= T ) %>% filter(.,Comparation != "SEX Male vs Female")
+openxlsx::write.xlsx(DE_merged_diets,"~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/DE_trancripts_counts(624).xlsx")
+DE_merged_diets <- DE_merged_diets[!duplicated(DE_merged_diets$Contig_Name),]
+
+DE_annoted_diets <-  filter(DE_merged_diets, grepl("^K", Kegg_code) | evalue <= 2.20e-15) %>% filter(., differex != "Not significant")
+
+DE_annoted_and_DE_diets <- DE_annoted_diets %>% filter(.,venom_related == "YES")
+raw_counts_DE_annoted_and_venom_related_diets <- CountData[rownames(CountData) %in% DE_annoted_and_DE_diets$Contig_Name,]
+
+openxlsx::write.xlsx(raw_counts_DE_annoted_and_venom_related_diets, "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/ raw_counts_DE_annoted_and_venom_related_diets.xlsx",rowNames = T)
+
+raw_counts_DE_annoted_diets <-  CountData[rownames(CountData) %in% DE_annoted_diets$Contig_Name,]
+
+openxlsx::write.xlsx(raw_counts_DE_annoted_diets, "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/ raw_counts_DE_annoted_diets.xlsx",rowNames = T)
+
+
+```
+
+-------------------------------------------------------------------
+
+- Se consideraron `r DE_diet_binded$Contig_Name %>% unique() %>% length()`  transcritos para la expresion diferencial. //
+- Mostraron expresion diferencial: `r DE_filtered$Contig_Name %>% unique() %>% length()`. //
+- Mostraron expresion diferencial y fueron anotados: `r DE_annoted_and_DE$Contig_Name %>% unique() %>% length()`. (conteo = `r DE_annoted_and_DE %>% nrow()`) //
+- Mostraron expresion diferencial y estan relacionados con la produccion de veneno: `r DE_annoted_and_venomrelated$Contig_Name %>% unique() %>% length()` (Conteo = `r DE_annoted_and_venomrelated %>% nrow()`).//
+
+```{r}
+Neurotoxins <- filter(DE_annoted_and_DE, New_cathegories == "Neurotoxin")
+Serine <- filter(DE_annoted_and_DE, New_cathegories == "Serine endopeptidase")
+Metalloproteases <- filter(DE_annoted_and_DE, New_cathegories == "Metalloprotease toxin")
+Others <- filter(DE_annoted_and_DE, New_cathegories == "Other proteins")
+```
+
+  - Neurotoxins: `r Neurotoxins$Contig_Name %>% unique() %>% length()`
+  
+  - Serine endopeptidases: `r Serine$Contig_Name %>% unique() %>% length()`
+  
+  - Metalloproteases: `r Metalloproteases$Contig_Name %>% unique() %>% length()`
+  
+  - Others: `r Others$Contig_Name %>% unique() %>% length()`
+
+### Dietas
+
+-numero de transcritos diferencialmente expresados al comparar dietas: `r nrow(DE_merged_diets)`.
+
+-numero de transcritos direrencialemente expresados y anotados al comparar dietas: `r nrow(DE_annoted_diets)`
+
+-numero de transcritos direrencialemente expresados, anotados  y relacionados a veneno al comparar dietas: `r nrow(DE_annoted_and_DE_diets)`.
