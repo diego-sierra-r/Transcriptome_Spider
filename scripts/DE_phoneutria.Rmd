@@ -149,7 +149,7 @@ AutoDE <- function(between, lfc) {
                      col = Coldata, 
                      design = as.formula("~ SEX"),
                      lfc = lfc) #Supplementary Table S2.xlsx
-    write.xlsx(DESeq2_sex[1], paste0(getwd(),"/Data/Supplementary Table S2.xlsx")|> str_replace("/scripts",""))
+    write.xlsx(DESeq2_sex[1], paste0(getwd(),"/Results_DE/Supplementary Table S2.xlsx")|> str_replace("/scripts",""))
     return(DESeq2_sex)
   }else if (between == "DIET wide") {
     combinations <<- create_comb(granulate = F) %>% 
@@ -265,11 +265,21 @@ DE_annoted_and_venomrelated <- filter(DE_annoted_and_DE, venom_related == "YES")
 
 
 DE_merged_diets <- merge(x = DE_filtered, y = Annot, by = "Contig_Name", all.x= T ) %>% filter(.,Comparation != "SEX Male vs Female")
+openxlsx::write.xlsx(DE_merged_diets,"~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/DE_trancripts_counts(624).xlsx")
 DE_merged_diets <- DE_merged_diets[!duplicated(DE_merged_diets$Contig_Name),]
 
 DE_annoted_diets <-  filter(DE_merged_diets, grepl("^K", Kegg_code) | evalue <= 2.20e-15) %>% filter(., differex != "Not significant")
 
 DE_annoted_and_DE_diets <- DE_annoted_diets %>% filter(.,venom_related == "YES")
+raw_counts_DE_annoted_and_venom_related_diets <- CountData[rownames(CountData) %in% DE_annoted_and_DE_diets$Contig_Name,]
+
+openxlsx::write.xlsx(raw_counts_DE_annoted_and_venom_related_diets, "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/ raw_counts_DE_annoted_and_venom_related_diets.xlsx",rowNames = T)
+
+raw_counts_DE_annoted_diets <-  CountData[rownames(CountData) %in% DE_annoted_diets$Contig_Name,]
+
+openxlsx::write.xlsx(raw_counts_DE_annoted_diets, "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/ raw_counts_DE_annoted_diets.xlsx",rowNames = T)
+
+
 ```
 
 -------------------------------------------------------------------
@@ -300,8 +310,4 @@ Others <- filter(DE_annoted_and_DE, New_cathegories == "Other proteins")
 
 -numero de transcritos direrencialemente expresados y anotados al comparar dietas: `r nrow(DE_annoted_diets)`
 
--numero de transcritos direrencialemente expresados, anotados  y relacionados a veneno al comparar dietas: `r nrow(DE_annoted_and_DE_diets)`
-
-
-
-
+-numero de transcritos direrencialemente expresados, anotados  y relacionados a veneno al comparar dietas: `r nrow(DE_annoted_and_DE_diets)`.
