@@ -492,6 +492,3 @@
 15/15"
 "1","
 "
-"0","write.xlsx(DESeq2_sex[1], paste0(getwd(),""/Data/Supplementary Table S2.xlsx"")|> str_replace(""/scripts"",""""))"
-"0",""
-"0",""

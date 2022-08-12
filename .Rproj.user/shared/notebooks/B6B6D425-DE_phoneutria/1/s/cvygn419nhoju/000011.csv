@@ -36,24 +36,26 @@ replacement repositories:
 "2","Installation paths not writeable, unable to update packages
   path: /usr/lib/R/library
   packages:
-    nlme, spatial, survival
+    nlme, spatial
   path: /usr/local/lib/R/site-library
   packages:
     ade4, adegenet, ape, BH, Biobase, BiocGenerics, BiocVersion, blob, brew, brio,
     bslib, cachem, callr, classInt, cli, clipr, colorspace, commonmark, crayon,
     credentials, crosstalk, curl, data.table, DBI, deldir, desc, devtools, diffobj,
-    digest, dplyr, DT, e1071, ellipsis, evaluate, fansi, farver, fs, gdata, generics,
-    GEOquery, gert, ggplot2, gh, gmodels, graph, gtools, highr, hms, htmltools,
-    htmlwidgets, httpuv, httr, igraph, isoband, jquerylib, jsonlite, knitr, later,
-    lifecycle, limma, magrittr, memoise, mime, openssl, pegas, permute, pillar,
-    pixmap, pkgbuild, pkgload, plyr, processx, promises, ps, R.methodsS3, R.oo,
-    R.utils, R6, rappdirs, raster, rcmdcheck, RColorBrewer, Rcpp, RCurl, remotes,
-    rex, rlang, rmarkdown, roxygen2, rprojroot, RSQLite, rversions, sass, scales,
-    segmented, seqinr, sessioninfo, sf, shiny, sp, spData, spdep, stringi, testthat,
-    tibble, tidyselect, tinytex, units, usethis, utf8, vctrs, vegan, viridisLite,
-    waldo, withr, xfun, xml2, yaml, zip
+    digest, dplyr, e1071, ellipsis, fansi, farver, fs, gdata, generics, GEOquery,
+    ggplot2, gh, gmodels, graph, gtools, highr, hms, htmltools, htmlwidgets, httpuv,
+    httr, igraph, isoband, jquerylib, jsonlite, knitr, later, lifecycle, limma,
+    magrittr, memoise, mime, openssl, pegas, permute, pillar, pixmap, pkgbuild,
+    pkgload, plyr, processx, promises, ps, R.methodsS3, R.oo, R.utils, R6, rappdirs,
+    raster, rcmdcheck, RColorBrewer, Rcpp, RCurl, remotes, rex, rlang, rmarkdown,
+    roxygen2, rprojroot, RSQLite, rversions, sass, scales, segmented, seqinr,
+    sessioninfo, sf, shiny, sp, spData, stringi, testthat, tibble, tidyselect,
+    tinytex, units, usethis, utf8, vctrs, vegan, viridisLite, waldo, withr, xml2,
+    yaml, zip
 "
-"2","Old packages: 'edgeR', 'MASS', 'nloptr'
+"2","Old packages: 'blogdown', 'bookdown', 'DT', 'edgeR', 'estimability', 'evaluate',
+  'flexdashboard', 'GenomeInfoDb', 'gert', 'ggraph', 'graphlayouts', 'insight',
+  'MASS', 'nloptr', 'Rsubread', 'scholar', 'spdep', 'survival', 'terra', 'xfun'
 "
 "1","Update all/some/none? [a/s/n]: "
 "0","n"

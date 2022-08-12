@@ -258,26 +258,25 @@ DE_diet_binded <- bind_DE(by = "granulate")
 Annot <-read.csv(paste0(dataPath,"/ev_filtered_without_dup_for_cat.csv"))
 DE_filtered <- filter(DE_diet_binded, differex != "Not significant")
 DE_merged <- merge(x = DE_filtered, y = Annot, by = "Contig_Name", all.x= T )
-DE_merged <- DE_merged[!duplicated(DE_merged$Contig_Name),]
+#DE_merged <- DE_merged[!duplicated(DE_merged$Contig_Name),]
 DE_annoted_and_DE <- filter(DE_merged, grepl("^K", Kegg_code) | evalue <= 2.20e-15)
 DE_annoted_and_venomrelated <- filter(DE_annoted_and_DE, venom_related == "YES")
 
 
 DE_merged_diets <- merge(x = DE_filtered, y = Annot, by = "Contig_Name", all.x= T ) %>% filter(.,Comparation != "SEX Male vs Female")
 openxlsx::write.xlsx(DE_merged_diets,"~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/DE_trancripts_counts(624).xlsx")
-DE_merged_diets <- DE_merged_diets[!duplicated(DE_merged_diets$Contig_Name),]
+#DE_merged_diets <- DE_merged_diets[!duplicated(DE_merged_diets$Contig_Name),]
 
 DE_annoted_diets <-  filter(DE_merged_diets, grepl("^K", Kegg_code) | evalue <= 2.20e-15) %>% filter(., differex != "Not significant")
 
 DE_annoted_and_DE_diets <- DE_annoted_diets %>% filter(.,venom_related == "YES")
-raw_counts_DE_annoted_and_venom_related_diets <- CountData[rownames(CountData) %in% DE_annoted_and_DE_diets$Contig_Name,]
+raw_counts_DE_annoted_and_venom_related_diets <- CountData[rownames(CountData) %in% DE_merged_diets$Contig_Name,] # ahora estos rawcount contiene todos los trancrticos venom
 
 openxlsx::write.xlsx(raw_counts_DE_annoted_and_venom_related_diets, "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/ raw_counts_DE_annoted_and_venom_related_diets.xlsx",rowNames = T)
 
 raw_counts_DE_annoted_diets <-  CountData[rownames(CountData) %in% DE_annoted_diets$Contig_Name,]
 
 openxlsx::write.xlsx(raw_counts_DE_annoted_diets, "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/ raw_counts_DE_annoted_diets.xlsx",rowNames = T)
-
 
 ```
 
