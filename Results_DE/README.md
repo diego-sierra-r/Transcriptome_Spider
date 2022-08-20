@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 ### DE between diets
 
 There is no differential expression when comparing diets taking into
