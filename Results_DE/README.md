@@ -1,3 +1,16 @@
+
+### DE between Sexes
+
+- Number of differentially expressed transcripts between sexes: **76**
+- Number of differentially expressed and annotated transcripts: **37**
+- Number of differentially expressed transcripts annotated and related to venom production: **19**
+
+This results are avilible at Results_DE/Transcriptome_Spider/Results_DE/DE_trancripts(76).xlsx
+Supplementary Table S2 have 26087 unique transcript in the contign name column. 
+Supplementary Table S3 now contains just 32 transcripts DE and annotated.
+Suppermentary table S$ now contains just the number counts through 76 DE transcripts
+Figure 3 was edited to improve readability.
+Figure 2 was edited according to the new results.
 ### DE between diets
 
 There is no differential expression when comparing diets taking into
