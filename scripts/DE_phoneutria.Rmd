@@ -211,9 +211,10 @@ AutoDE <- function(between, lfc) {
     return(DESeq2_diets)
   }
   
+  
 }
 lfc = c(-1.5,1.5)
-DESeq2_sex <-  AutoDE(between = "SEX",lfc = c(-1.5,1.5))
+DESeq2_sex <-  AutoDE(between = "SEX",lfc = c(-2,2))
 DESeq2_diet_wide <-  AutoDE(between = "DIET wide", lfc = c(-1.5,1.5))
 DESeq2_diet_granulate <-  AutoDE(between = "DIET granulate",lfc = c(-1.5,1.5))
 
@@ -282,9 +283,14 @@ openxlsx::write.xlsx(raw_counts_DE_annoted_diets, "~/Documentos/R/R_Transcriptom
 
 -------------------------------------------------------------------
 
-- Se consideraron `r DE_diet_binded$Contig_Name %>% unique() %>% length()`  transcritos para la expresion diferencial. //
+- Se consideraron `r DE_diet_binded$Contig_Name %>% unique() %>% length()`  transcritos para la expresion diferencial. // `r openxlsx::write.xlsx(DE_diet_binded, "Supplementary Table S1.xlsx")`
+
 - Mostraron expresion diferencial: `r DE_filtered$Contig_Name %>% unique() %>% length()`. //
+`r openxlsx::write.xlsx(CountData[rownames(CountData) %in% DE_filtered$Contig_Name,], "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/Supplementary Table S4.xlsx",rowNames = T)`
+
 - Mostraron expresion diferencial y fueron anotados: `r DE_annoted_and_DE$Contig_Name %>% unique() %>% length()`. (conteo = `r DE_annoted_and_DE %>% nrow()`) //
+`r openxlsx::write.xlsx(DE_annoted_and_DE, "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/Supplementary Table S3.xlsx")`
+
 - Mostraron expresion diferencial y estan relacionados con la produccion de veneno: `r DE_annoted_and_venomrelated$Contig_Name %>% unique() %>% length()` (Conteo = `r DE_annoted_and_venomrelated %>% nrow()`).//
 
 ```{r}
@@ -309,3 +315,219 @@ Others <- filter(DE_annoted_and_DE, New_cathegories == "Other proteins")
 -numero de transcritos direrencialemente expresados y anotados al comparar dietas: `r nrow(DE_annoted_diets)`
 
 -numero de transcritos direrencialemente expresados, anotados  y relacionados a veneno al comparar dietas: `r nrow(DE_annoted_and_DE_diets)`.
+
+## Sex results
+
+
+
+```{r}
+filter(as.data.frame(DESeq2_sex[1]),
+       differex != "Not significant") |> nrow() # N tansctri DE
+
+Annot <-read.csv(paste0(dataPath,"/ev_filtered_without_dup_for_cat.csv"))
+
+DE_SEX <- merge(
+  x = filter(as.data.frame(DESeq2_sex[1]),
+       differex != "Not significant"),
+  y = Annot, by = "Contig_Name", all.x= T ) |>
+  filter(Comparation == "SEX Male vs Female")
+
+filter(DE_SEX, !is.na(DE_SEX$Name)) |> nrow()
+
+filter(DE_SEX, !is.na(DE_SEX$Name) & venom_related == "YES") |> nrow()
+
+openxlsx::write.xlsx(DE_SEX,"~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/DE_trancripts(76).xlsx")
+```
+
+El numero de  transcritos diferencialemtne expresados entre sexos: `r filter(as.data.frame(DESeq2_sex[1]),differex != "Not significant") |> nrow()`
+
+numero de transcritos diferencialemten expresados y anotados:
+`r filter(DE_SEX, !is.na(DE_SEX$Name)) |> nrow()`
+numero de transcritos diferencialemtne expresados anotados y relacionados a la produccion de veneno:
+
+`r filter(DE_SEX, !is.na(DE_SEX$Name) & venom_related == "YES") |> nrow()`
+
+
+## MDS
+
+```{r}
+dds_sex <- DESeqDataSetFromMatrix(countData=CountData,
+                                  colData=Coldata, 
+                                  design =  ~ SEX)
+keep <- rowSums(counts(dds_sex)) >= 10 #prefiltrar un numero minimo de conteos
+dds_sex <- dds_sex[keep,]
+register(MulticoreParam(7)) 
+dds_sex <- dds_sex %>%  
+        DESeq(., parallel = T)
+
+dds_sex_results <- dds_sex %>% 
+        results() %>%
+        as.data.frame() 
+
+dds_sex_results <- dds_sex_results %>% 
+        mutate(., differex =(case_when(log2FoldChange >= 2 & padj <= 0.05 ~ "UP",
+                                       log2FoldChange <= -2 & padj <= 0.05 ~ "DOWN",
+                                       log2FoldChange <= 2 | log2FoldChange >= 2 & padj >0.05 ~ "Not significant"))) %>% drop_na()
+
+
+
+
+vsd_0 <- vst(dds_sex, blind = F) # calcualte dispersion trend
+sampleDists <- dist(t(assay(vsd_0))) #Calculate distance matrix
+sampleDistMatrix <- as.matrix( sampleDists ) # Create distance matrix
+mdsData <- data.frame(cmdscale(sampleDistMatrix)) #perform MDS
+mds <- cbind(mdsData, as.data.frame(colData(vsd_0)))
+
+F_vr_M_DESeq2_MDS <-  ggplot(mds, aes(X1,X2,color=SEX)) +
+        geom_label_repel(aes(label = ID_sample), size = 3) +
+        geom_point(size=3) +
+        scale_color_manual(values =  c("#B22222","#8B008B"),
+                           labels = c("Female", "Male"),
+                           name = "Sex") +
+        labs(title = "Females vr Males DESeq2",
+             x = "Dim 1",
+             y = "Dim 2") +
+        theme_classic2()
+
+
+F_vr_M_DESeq2_MDS
+
+
+```
+
+## volcano plot
+```{r}
+volcanoplot_phoneutria <- ggplot(data = dds_sex_results,
+                                 aes(x = log2(baseMean),
+                                     y = log2FoldChange, color = differex))+
+  geom_point()+
+#        geom_hex(bins = 30) +
+        labs(color = "Differentially expressed",
+             fill = "Number of transcripts")+ 
+  xlab("Log2 Base-mean")+ ylab("log2 Fold-change")+
+        theme_classic2() +
+  theme(axis.text.x = element_text(size = 18),
+        axis.text.y = element_text(size = 18),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))+
+        coord_fixed(ratio = 2/1) +
+        scale_x_continuous(breaks = seq(from = 0, to = 20,2))+
+        scale_y_continuous(breaks = seq(from = -10, to = 10,2)) +
+        coord_flip()
+
+volcanoplot_phoneutria
+ggsave(filename = "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/Figure 3.pdf",device = "pdf")
+```
+
+## parallel
+
+```{r}
+
+Phoneutri_count_bigPint_SEX <- as.data.frame(dds_sex@assays@data$counts)
+xlab <- colnames(Phoneutri_count_bigPint_SEX)
+Phoneutri_count_bigPint_SEX$ID <- rownames(Phoneutri_count_bigPint_SEX)
+Phoneutri_count_bigPint_SEX %<>%  dplyr::select(ID, everything())
+rownames(Phoneutri_count_bigPint_SEX) <- NULL
+
+#you have to change the column names for some shorten ones and separate the treatment and the samples by a point in order to work with bigPint
+colnames(Phoneutri_count_bigPint_SEX) <- c("ID","F.1","F.2", "F.3", "F.4", "F.5","F.6", "F.7", "F.8", "F.9","F.10", "M.1", "M.2", "M.3",  "M.4", "M.5", "M.6", "M.7", "M.8",  "M.9","M.10")
+
+head(Phoneutri_count_bigPint_SEX)
+
+datametrics_x <- dds_sex_results 
+datametrics_x$ID <- rownames(datametrics_x)
+
+datametrics_x <- datametrics_x %>% 
+        select(ID, everything()) %>%  # create new column with the rownames
+        select(., !differex)
+
+rownames(datametrics_x) <- NULL # delete the rownames
+datametrics_x <- list(F_M = datametrics_x) # create a list with the counts insida as a dataframe
+
+datametrics_x$F_M <- as.data.frame(datametrics_x$F_M)
+
+tenSigGenes_phoneutria <- dds_sex_results %>% arrange(padj) %>%  filter(padj <= 0.05) %>% arrange(log2FoldChange)
+
+tenSigGenes_phoneutria <- bind_rows(head(tenSigGenes_phoneutria,10),
+                                    tail(tenSigGenes_phoneutria,10))
+tenSigGenes_phoneutria$ID <- rownames(tenSigGenes_phoneutria)
+rownames(tenSigGenes_phoneutria) <- NULL
+tenSigGenes_phoneutria <- dplyr::select(tenSigGenes_phoneutria,"ID") %>% filter(row_number() <= 20)
+tenSigGenes_phoneutria <- tenSigGenes_phoneutria[,1]
+
+dataID <- Phoneutri_count_bigPint_SEX$ID
+data2 <- as.matrix(Phoneutri_count_bigPint_SEX[,-1])
+d <- DGEList(counts = data2, lib.size = rep(1,20))
+cpm.data.new <- cpm(d, TRUE, TRUE)
+# Normalize de data
+data2 <- betweenLaneNormalization(cpm.data.new, which="full", round=FALSE) %>% as.data.frame()
+
+# Create matrix
+data2$ID <- dataID
+data2 = data2[,c(21,1:20)]
+data2s = as.data.frame(t(apply(as.matrix(data2[,-1]), 1, scale)))
+data2s$ID = as.character(data2$ID)
+data2s = data2s[,c(21,1:20)]
+colnames(data2s) <- colnames(data2)
+nID = which(is.nan(data2s[,2]))
+data2s[nID,2:length(data2s)] = 0
+
+#Create plot
+ret <- plotPCP(data = data2s, dataMetrics = datametrics_x, geneList = tenSigGenes_phoneutria, saveFile = FALSE, threshVar = "log2FoldChange", hover = F, lineSize = 0.4, lineColor = "orangered2")
+colnames(data2s) <- c("Contin_Name", Coldata$ID_sample)
+
+# extract and improve the plot
+p <- ret[[1]]
+
+p <-  p + theme_classic2() + 
+        scale_x_discrete(labels = dds_sex$ID_sample) +
+        theme(axis.text.x = element_text(angle = 90)) +
+        annotate("rect",
+                 xmin = 0.5,
+                 xmax = 10.5,
+                 ymin = -2, 
+                 ymax = 2,
+                 alpha = 0.2,
+                 fill = "#808000") +
+        annotate("rect", 
+                 xmin = 10.5,
+                 xmax = 20.5, 
+                 ymin = -2, 
+                 ymax = 2,
+                 alpha = 0.2,
+                 fill = "#00BFFF")
+
+p 
+```
+
+```{r}
+summ <- openxlsx::read.xlsx("~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/Supplementary Table S3.xlsx")
+
+
+
+# Sort the categories
+summ$New_cathegories <- factor(summ$New_cathegories, levels = names(sort(table(summ$New_cathegories),decreasing = F)))
+summ %<>% group_by(.,New_cathegories) %>% dplyr::summarise(Cases =n())
+
+
+p <- ggplot(summ) +
+  geom_col(mapping = aes(x = New_cathegories,
+                         Cases, 
+                         fill = New_cathegories))+
+  geom_text(aes(x= New_cathegories,label= Cases,y = Cases),
+              hjust = +1.5, 
+              position = position_dodge(.9))+
+  coord_flip() + 
+  scale_fill_brewer(palette = "Dark2") + 
+  guides(fill = "none") +
+  xlab(label = c(1:7)) +
+  ylab("Number of annotated transcripts") +
+  xlab("") + 
+  theme_classic2() + 
+  labs("")+ 
+  theme(axis.text.y = element_text(size = 15),
+        axis.text.x = element_text(size = 15))
+p
+ggsave(filename = "~/Documentos/R/R_Transcriptome/Transcriptome_Spider/Results_DE/Figure 2.pdf", device = "pdf")
+```
+
