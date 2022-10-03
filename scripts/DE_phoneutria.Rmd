@@ -213,14 +213,114 @@ AutoDE <- function(between, lfc) {
   
   
 }
-lfc = c(-1.5,1.5)
-DESeq2_sex <-  AutoDE(between = "SEX",lfc = c(-2,2))
-DESeq2_diet_wide <-  AutoDE(between = "DIET wide", lfc = c(-1.5,1.5))
-DESeq2_diet_granulate <-  AutoDE(between = "DIET granulate",lfc = c(-1.5,1.5))
-
+#lfc = c(-1.5,1.5)
+#DESeq2_sex <-  AutoDE(between = "SEX",lfc = c(-1.5,1.5))
+#DESeq2_diet_wide <-  AutoDE(between = "DIET wide", lfc = c(-1.5,1.5))
+#DESeq2_diet_granulate <-  AutoDE(between = "DIET granulate",lfc = c(-1.5,1.5))
 
 
 ```
+
+
+```{r}
+# create folders
+folder_names <- list(c(-1,1),c(-1.5,1.5),c(-2,2))
+
+for (i in folder_names) {
+  if (dir.exists(paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " ")))) {
+    print("The folder already exists")
+  } else {
+    paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " ")) |> dir.create(recursive = T)
+  }
+}
+
+Annot <-read.csv(paste0(dataPath,"/ev_filtered_without_dup_for_cat.csv"))
+
+get_MDS <- function(count,col,design,lfc) {
+  dds <- DESeqDataSetFromMatrix(countData=count,
+                                colData=col,
+                                design = design)
+  register(MulticoreParam(7)) 
+  keep <- rowSums(counts(dds)) >= 10 #prefliter
+  dds <- dds[keep,]
+  dds <- DESeq(dds, parallel = T)
+  
+  DESeq2 <- results(dds, alpha = 0.05, lfcThreshold = lfc[2])
+  DESeq2 <- DESeq2 %>% as.data.frame() %>% 
+        mutate(., differex =(case_when(log2FoldChange >= 2 & padj <= 0.05 ~ "UP",
+                                       log2FoldChange <= -2 & padj <= 0.05 ~ "DOWN",
+                                       log2FoldChange <= 2 | log2FoldChange >= 2 & padj >0.05 ~ "Not significant"))) %>% drop_na()
+  
+  vsd_0 <- vst(dds, blind = F) # calcualte dispersion trend
+  sampleDists <- dist(t(assay(vsd_0))) #Calculate distance matrix
+  sampleDistMatrix <- as.matrix( sampleDists ) # Create distance matrix
+  mdsData <- data.frame(cmdscale(sampleDistMatrix)) #perform MDS
+  mds <- cbind(mdsData, as.data.frame(colData(vsd_0)))
+  
+  F_vr_M_DESeq2_MDS <-  ggplot(mds, aes(X1,X2,color=SEX)) +
+          geom_label_repel(aes(label = ID_sample), size = 2.5) +
+          geom_point(size=3) +
+          scale_color_manual(values =  c("#B22222","#8B008B"),
+                             labels = c("Female", "Male"),
+                             name = "Sex") +
+          labs(title = "Females vr Males DESeq2",
+               x = "Dim 1",
+               y = "Dim 2") +
+          theme_classic2()
+  
+  
+  return(F_vr_M_DESeq2_MDS)
+
+}
+
+
+
+for (i in folder_names) {
+  DESeq2_sex <-  AutoDE(between = "SEX",lfc = i)
+  openxlsx::write.xlsx(DESeq2_sex[[1]],paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","DE_SEX",paste(as.character(i),collapse = "_"),".xlsx"))
+  
+  DESeq2_sex_filtered <- filter(DESeq2_sex[[1]], differex != "Not significant")
+  openxlsx::write.xlsx(CountData[rownames(CountData) %in% DESeq2_sex_filtered$Contig_Name,],paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","raw_counts_sex",paste(as.character(i),collapse = "_"),".xlsx"))
+  
+  DE_merged <- merge(x = DESeq2_sex_filtered,
+                     y = Annot, by = "Contig_Name", all.x= T )
+#DE_merged <- DE_merged[!duplicated(DE_merged$Contig_Name),]
+  DE_annoted_and_DE <- filter(DE_merged,
+                              grepl("^K", Kegg_code) | evalue <= 2.20e-15)
+  openxlsx::write.xlsx(DE_annoted_and_DE,paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","SEX_Transcripts_DE_and_annotated",paste(as.character(i),collapse = "_"),".xlsx"))
+  
+  p <- get_MDS(CountData,
+          Coldata,
+          design = as.formula("~ SEX"),
+          lfc = i)
+  
+  pdf(paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","x.pdf"),
+      height = 5,
+      width = 5)
+  p
+  dev.off()
+      
+  
+}
+
+for (i in folder_names) {
+  DESeq2_diet_wide <-  AutoDE(between = "DIET wide", lfc = i)
+  openxlsx::write.xlsx(DESeq2_diet_wide[[1]][[1]],paste0(getwd(),"/Results_DE","/lfc",paste(as.character(i),collapse = " "),"/","DE_diet_wide",paste(as.character(i),collapse = "_"),".xlsx"))
+  
+  DESeq2_diet_filtered <- filter(DESeq2_diet_wide[[1]][[1]], differex != "Not significant")
+  openxlsx::write.xlsx(CountData[rownames(CountData) %in% DESeq2_diet_filtered$Contig_Name,],paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","raw_counts_diet_S4",paste(as.character(i),collapse = "_"),".xlsx"))
+  
+  DE_merged <- merge(x = DESeq2_diet_filtered,
+                     y = Annot, by = "Contig_Name", all.x= T )
+#DE_merged <- DE_merged[!duplicated(DE_merged$Contig_Name),]
+  DE_annoted_and_DE <- filter(DE_merged,
+                              grepl("^K", Kegg_code) | evalue <= 2.20e-15)
+  openxlsx::write.xlsx(DE_annoted_and_DE,paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","DIETS_Transcripts_DE_and_annotated",paste(as.character(i),collapse = "_"),".xlsx"))
+
+}
+
+```
+
 
 ```{r}
 ## Anotacion
@@ -254,7 +354,7 @@ bind_DE <- function(by) {
 }
 
   
-DE_diet_binded <- bind_DE(by = "wide")
+DE_diet_binded <- bind_DE(by = "granulate")
 
 Annot <-read.csv(paste0(dataPath,"/ev_filtered_without_dup_for_cat.csv"))
 DE_filtered <- filter(DE_diet_binded, differex != "Not significant")
@@ -351,6 +451,7 @@ numero de transcritos diferencialemtne expresados anotados y relacionados a la p
 ## MDS
 
 ```{r}
+
 dds_sex <- DESeqDataSetFromMatrix(countData=CountData,
                                   colData=Coldata, 
                                   design =  ~ SEX)
@@ -368,8 +469,6 @@ dds_sex_results <- dds_sex_results %>%
         mutate(., differex =(case_when(log2FoldChange >= 2 & padj <= 0.05 ~ "UP",
                                        log2FoldChange <= -2 & padj <= 0.05 ~ "DOWN",
                                        log2FoldChange <= 2 | log2FoldChange >= 2 & padj >0.05 ~ "Not significant"))) %>% drop_na()
-
-
 
 
 vsd_0 <- vst(dds_sex, blind = F) # calcualte dispersion trend
@@ -397,6 +496,8 @@ F_vr_M_DESeq2_MDS
 
 ## volcano plot
 ```{r}
+
+### hacer uno entre dietas
 volcanoplot_phoneutria <- ggplot(data = dds_sex_results,
                                  aes(x = log2(baseMean),
                                      y = log2FoldChange, color = differex))+
