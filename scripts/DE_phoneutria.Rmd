@@ -273,6 +273,43 @@ get_MDS <- function(count,col,design,lfc) {
 
 }
 
+get_volcano <- function(count,col,design,lfc) {
+  
+  dds <- DESeqDataSetFromMatrix(countData=count,
+                                colData=col,
+                                design = design)
+  register(MulticoreParam(7)) 
+  keep <- rowSums(counts(dds)) >= 10 #prefliter
+  dds <- dds[keep,]
+  dds <- DESeq(dds, parallel = T)
+  
+  DESeq2 <- results(dds, alpha = 0.05, lfcThreshold = lfc[2])
+  DESeq2 <- DESeq2 %>% as.data.frame() %>% 
+        mutate(., differex =(case_when(log2FoldChange >= lfc[2] & padj <= 0.05 ~ "UP",
+                                       log2FoldChange <= lfc[1] & padj <= 0.05 ~ "DOWN",
+                                       log2FoldChange <= lfc[2] | log2FoldChange >= lfc[2] & padj >0.05 ~ "Not significant"))) %>% drop_na()
+  volcanoplot_phoneutria <- ggplot(data = DESeq2,
+                                 aes(x = log2(baseMean),
+                                     y = log2FoldChange, color = differex))+
+  geom_point()+
+#        geom_hex(bins = 30) +
+        labs(color = "Differentially \n expressed",
+             fill = "Number of transcripts")+ 
+  xlab("Log2 Base-mean")+ ylab("log2 Fold-change")+
+        theme_classic2() +
+  theme(axis.text.x = element_text(size = 18),
+        axis.text.y = element_text(size = 18),
+        axis.title.x = element_text(size = 20),
+        axis.title.y = element_text(size = 20))+
+        coord_fixed(ratio = 2/1) +
+        scale_x_continuous(breaks = seq(from = 0, to = 20,2))+
+        scale_y_continuous(breaks = seq(from = -10, to = 10,2)) +
+        coord_flip()
+return(volcanoplot_phoneutria)
+  
+  
+}
+
 
 
 for (i in folder_names) {
@@ -288,18 +325,6 @@ for (i in folder_names) {
   DE_annoted_and_DE <- filter(DE_merged,
                               grepl("^K", Kegg_code) | evalue <= 2.20e-15)
   openxlsx::write.xlsx(DE_annoted_and_DE,paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","SEX_Transcripts_DE_and_annotated",paste(as.character(i),collapse = "_"),".xlsx"))
-  
-  p <- get_MDS(CountData,
-          Coldata,
-          design = as.formula("~ SEX"),
-          lfc = i)
-  
-  pdf(paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","x.pdf"),
-      height = 5,
-      width = 5)
-  p
-  dev.off()
-      
   
 }
 
@@ -318,6 +343,30 @@ for (i in folder_names) {
   openxlsx::write.xlsx(DE_annoted_and_DE,paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","DIETS_Transcripts_DE_and_annotated",paste(as.character(i),collapse = "_"),".xlsx"))
 
 }
+
+# images 
+
+for (i in folder_names) {
+  p <- get_MDS(CountData,
+          Coldata,
+          design = as.formula("~ SEX"),
+          lfc = i)
+  ggsave(filename = paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","MDS",paste(as.character(i),collapse = "_"),".pdf"),
+        plot = p,
+        device = "pdf")
+  
+  p <- get_volcano(CountData,
+          Coldata,
+          design = as.formula("~ SEX"),
+          lfc = i)
+  ggsave(filename = paste0(getwd(),"/Results_DE","/lfc ",paste(as.character(i),collapse = " "),"/","Volcano",paste(as.character(i),collapse = "_"),".pdf"),
+        plot = p,
+        device = "pdf",
+        width = 6,
+        height = 6)
+}
+
+
 
 ```
 
